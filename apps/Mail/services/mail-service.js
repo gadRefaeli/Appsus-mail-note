@@ -13,9 +13,21 @@ var STORAGE_KEY = 'mailDB';
 var gMails;
 _createMails()
 
-function query() {
+function query(filterBy) {
   var gMails = storageService.loadFromStorage(STORAGE_KEY)
-  return Promise.resolve(gMails)
+  if (!filterBy)return Promise.resolve(gMails)
+  var { search, read, unread } = filterBy
+  var readState=null;
+  if(read) readState=true;
+  if(unread) readState=false;
+  const filteredMails = gMails.filter(mail => {
+    if(readState!==null){
+  return mail.body.includes(search) &&
+  mail.isRead===readState
+    }
+    return mail.body.includes(search)
+  })
+  return Promise.resolve(filteredMails)
 }
 
 
@@ -32,8 +44,8 @@ function _createMails() {
   if (!mails || mails.length === 0) {
     var mails = [
       _createMail('Learn Photoshop ', 'gad@gmail.com', 'Whether you’re an Adobe newbie or an industry veteran, Temi will show you how to work smarter, not harder, using Photoshop Well cover the basics, tips, and tricks to kickstart your Photoshop experience and what Temi wishes hed known when he first started. During the second half of Temis workshop he will show us how his approach to poster design merges graphic design and photography Plus, youll get to design a poster LIVE alongside Temi as you experience his process Youll also receive an exclusive PDF with Temis secret Photoshop shortcuts and tips after the workshop. Access to the recording will be included for two weeks after the workshop  We recommend you have Adobe Photoshop downloaded for these workshops', false, 'Dribbble@gmail.com'),
-      _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'Dribbble@gmail.com'),
-      _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'Dribbble@gmail.com'),
+      _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'Gill@gmail.com'),
+      _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'huji@gmail.com'),
       _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'Dribbble@gmail.com'),
       _createMail('Learn Photoshop ', 'gad@gmail.com', 'Join us to learn Photoshop from the master', false, 'Dribbble@gmail.com'),
     ];

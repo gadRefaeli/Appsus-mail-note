@@ -7,7 +7,7 @@ export class MailAdd extends React.Component {
       subject: '',
       to: '',
       body: '',
-      from: ''
+      from: 'Me@gmail.com'
     }
   }
 
@@ -26,8 +26,7 @@ export class MailAdd extends React.Component {
   onSaveMail = (ev) => {
     ev.preventDefault()
     MailService.addMail(this.state.mail).then(() => {
-     console.log('gad')
-     
+     return this.props.history.push('/MailApp')
     })
   }
 
@@ -35,28 +34,23 @@ export class MailAdd extends React.Component {
     const { subject, to, body, from } = this.state.mail
     return (
       <form className="mail-add" onSubmit={this.onSaveMail}>
-
         <label>subject
           <input type="text" name="subject" value={subject} onChange={this.handleChange} />
         </label>
-
         <label>to
           <input type="text" name="to" value={to} onChange={this.handleChange} />
         </label>
-
-
         <label>body
           <input type="text" name="body" value={body} onChange={this.handleChange} />
         </label>
-
-
-        <label>from
+        {/* <label>from
           <input type="text" name="from" value={from} onChange={this.handleChange} />
-        </label>
+        </label> */}
+       
 
-        <button>send</button>
-{/* 
-        <button><Link to="/MailApp">send</Link></button> */}
+        
+        <button type="submit">send</button>
+        <button onClick= {() =>this.props.history.push('/MailApp')}>cancle</button>
         
       </form>
     )
