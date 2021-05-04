@@ -1,5 +1,5 @@
-import { MailService } from './services/mail-service.js'
-import { MailList } from './cmps/MailList.jsx'
+import { MailService } from '../services/mail-service.js'
+import { MailList } from '../cmps/MailList.jsx'
 export class MailApp extends React.Component {
 
     state = {
@@ -20,7 +20,7 @@ export class MailApp extends React.Component {
         const { mails } = this.state
         if (!mails) return <div>Loading...</div>
         return (
-            <section>
+            <section className="Mail-list-section">
                 <MailList mails={mails} />
             </section>
         )
