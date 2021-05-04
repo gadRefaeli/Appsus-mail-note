@@ -1,13 +1,1 @@
-body {
-    background-color: lightblue;
-}
-
-.user-preview {
-    background-color: darkcyan;
-    padding: 5px;
-    width: 200px;
-    text-align: center;    
-}
-.user-preview button {
-    margin: 5px;
-}
+@import "./basics/base.css"
