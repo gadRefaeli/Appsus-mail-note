@@ -1,13 +1,11 @@
+@import "./cmps/note.css";
+
 body {
     background-color: lightblue;
 }
 
-.user-preview {
-    background-color: darkcyan;
-    padding: 5px;
-    width: 200px;
-    text-align: center;    
-}
-.user-preview button {
-    margin: 5px;
+.keep-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
