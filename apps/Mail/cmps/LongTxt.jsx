@@ -1,4 +1,4 @@
-const MAX_CHARS_COUNT = 10;
+const MAX_CHARS_COUNT = 100;
 
 export class LongTxt extends React.Component {
     state = { 
@@ -7,7 +7,9 @@ export class LongTxt extends React.Component {
     } 
     toggleIsLongTxtShown = () => {
         const { isLongTxtShown } = this.state
+
         this.setState({ isLongTxtShown: !isLongTxtShown }, () => {
+            console.log(this.state.isLongTxtShown)
         });
     }
 

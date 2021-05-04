@@ -1,7 +1,7 @@
 export function AppFooter() {
   const { Link } = ReactRouterDOM;
 return (
-  <footer>
+  <footer className="footer">
     <small>coffe</small>
   </footer>
 )
