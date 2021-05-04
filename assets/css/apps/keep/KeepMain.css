@@ -1,4 +1,6 @@
-@import "./cmps/note.css";
+@import "./cmps/AddNote.css";
+@import "./cmps/NoteList.css";
+@import "./cmps/NotePreview.css";
 
 body {
     background-color: lightblue;

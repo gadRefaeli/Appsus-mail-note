@@ -1,0 +1,9 @@
+.note-list {
+    width: 90vw;
+    /* column-width: 300px; */
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-auto-flow: dense;
+    gap: 10px;
+}

@@ -1,0 +1,32 @@
+.note-txt-container {
+    background-color: #fff;
+    width: 600px;
+    margin-bottom: 30px;
+}
+
+.note-txt-controller {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-txt-controller > * {
+    margin: 10px;
+}
+
+.nav-note {
+    width: 250px
+}
+
+.note-txt-controller .nav-note > *{
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.input-note-txt {
+    padding: 10px;
+}
+
+.nav-note .btn-active {
+    background-color: #000;
+    color: white;
+}

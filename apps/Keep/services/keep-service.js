@@ -14,7 +14,7 @@ _createNotes();
 
 function query(isPinned) {
     const filteredNotes = gNotes.filter(note => {
-        return note.isPinned = isPinned;
+        return note.isPinned === isPinned;
     })
     return Promise.resolve(filteredNotes);
 }
@@ -61,7 +61,7 @@ function _createNotes() {
                 type: "NoteTxt",
                 isPinned: true,
                 info: {
-                    txt: "Welcome to MissKeep!"
+                    txt: "Enjoy our Keep!"
                 }
             }
         ]        
