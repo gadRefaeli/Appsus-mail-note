@@ -19,10 +19,10 @@ export function App() {
             <AppHeader />
             <main>
                 <Switch>
-                   <Route component={Home} path="/" />
                    <Route component={BookApp} path="/BookApp" />
                    <Route component={KeepApp} path="/KeepApp" />
                    <Route component={MailApp} path="/MailApp" />
+                   <Route component={Home} path="/" />
                 </Switch>
             </main>
             <AppFooter />
