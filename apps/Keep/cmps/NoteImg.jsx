@@ -3,7 +3,7 @@ import { keepService } from '../services/keep-service.js'
 export class NoteImg extends React.Component {
     state = {
         note: {
-            type: 'noteImg',
+            type: 'NoteImg',
             isPinned: false,
             info: {
                 url: '',
@@ -12,7 +12,7 @@ export class NoteImg extends React.Component {
             style: null
         }
     }
-    
+
     inputRef = React.createRef()
 
     componentDidMount() {
@@ -21,39 +21,47 @@ export class NoteImg extends React.Component {
 
     handleChange = ({ target }) => {
         const value = target.value
-        this.setState(prevState => ({
-            note: {
-                ...prevState.note,
-                info: { txt: value }
-            }
-        }))
+        if (target.name === 'url') {
+            this.setState(prevState => ({
+                note: {
+                    ...prevState.note,
+                    info: { url: value, title: prevState.note.info.title }
+                }
+            })) 
+        } else if (target.name === 'title') {
+            this.setState(prevState => ({
+                note: {
+                    ...prevState.note,
+                    info: { title: value, url: prevState.note.info.url }
+                }
+            })) 
+        }
     }
 
     onSaveNote = () => {
         const { note } = this.state
-        if (!note.info.txt) return
-        let currNote = this.state.note
+        let currNote = note
         keepService.saveNote(currNote)
             .then(() => {
                 this.props.loadNotes()
-            })        
+            })
     }
 
     render() {
-        const { txt } = this.state.note.info
+        const { url, title } = this.state.note.info
         return (
             <section className="note-txt-container">
                 <div className="note-txt-controller">
-                <div>
-                <input className="input-note-txt" type="text" ref={this.inputRef} name="info.url" value={txt} placeholder="Enter img URL..." onChange={this.handleChange} />
-                <input className="input-note-txt" type="text" name="info.title" value={txt} placeholder="Enter title..." onChange={this.handleChange} />
-                </div>
-                <nav className="nav-note">
-                    <button onClick={() => {this.props.setNoteMode('noteTxt')}}>A</button>
-                    <button className="btn-active" onClick={() => {this.props.setNoteMode('noteImg')}}>Img</button>
-                    <button onClick={() => {this.props.setNoteMode('noteVideo')}}>video</button>
-                    <button onClick={() => {this.props.setNoteMode('noteTodos')}}>todo</button>
-                </nav>
+                    <div>
+                        <input className="input-note-txt" type="text" ref={this.inputRef} name="url" value={url} placeholder="Enter img URL..." onChange={this.handleChange} />
+                        <input className="input-note-txt" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
+                    </div>
+                    <nav className="nav-note">
+                        <button onClick={() => { this.props.setNoteMode('NoteTxt') }}>A</button>
+                        <button className="btn-active" onClick={() => { this.props.setNoteMode('NoteImg') }}>Img</button>
+                        <button onClick={() => { this.props.setNoteMode('NoteVideo') }}>video</button>
+                        <button onClick={() => { this.props.setNoteMode('NoteTodos') }}>todo</button>
+                    </nav>
                 </div>
                 <button onClick={this.onSaveNote}>Save note</button>
             </section>

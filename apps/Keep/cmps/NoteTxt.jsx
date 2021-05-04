@@ -3,7 +3,7 @@ import { keepService } from '../services/keep-service.js'
 export class NoteTxt extends React.Component {
     state = {
         note: {
-            type: 'noteTxt',
+            type: 'NoteTxt',
             isPinned: false,
             info: {
                 txt: ''
@@ -30,8 +30,7 @@ export class NoteTxt extends React.Component {
 
     onSaveNote = () => {
         const { note } = this.state
-        if (!note.info.txt) return
-        let currNote = this.state.note
+        let currNote = note
         keepService.saveNote(currNote)
             .then(() => {
                 this.props.loadNotes()
@@ -43,12 +42,12 @@ export class NoteTxt extends React.Component {
         return (
             <section className="note-txt-container">
                 <div className="note-txt-controller">
-                <input className="input-note-txt" type="text" ref={this.inputRef} name="info.txt" value={txt} placeholder="Enter text..." onChange={this.handleChange} />
+                <input className="input-note-txt" type="text" ref={this.inputRef} name="txt" value={txt} placeholder="Enter text..." onChange={this.handleChange} />
                 <nav className="nav-note">
-                    <button className="btn-active" onClick={() => {this.props.setNoteMode('noteTxt')}}>A</button>
-                    <button onClick={() => {this.props.setNoteMode('noteImg')}}>Img</button>
-                    <button onClick={() => {this.props.setNoteMode('noteVideo')}}>video</button>
-                    <button onClick={() => {this.props.setNoteMode('noteTodos')}}>todo</button>
+                    <button className="btn-active" onClick={() => {this.props.setNoteMode('NoteTxt')}}>A</button>
+                    <button onClick={() => {this.props.setNoteMode('NoteImg')}}>Img</button>
+                    <button onClick={() => {this.props.setNoteMode('NoteVideo')}}>video</button>
+                    <button onClick={() => {this.props.setNoteMode('NoteTodos')}}>todo</button>
                 </nav>
                 </div>
                 <button onClick={this.onSaveNote}>Save note</button>

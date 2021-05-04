@@ -3,5 +3,15 @@
     width: 300px;
     margin-bottom: 10px;
     padding: 10px;
+    position: relative;
+}
 
+.note-preview img {
+    width: 100%;
+}
+
+.note-preview .btn-remove {
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }

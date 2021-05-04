@@ -11,7 +11,7 @@ import { NoteVideo } from './cmps/NoteVideo.jsx'
 export class KeepApp extends React.Component {
     state = {
         notes: null,
-        noteMode: 'noteTxt'
+        noteMode: 'NoteTxt'
     }
 
     componentDidMount() {
@@ -19,7 +19,7 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        keepService.query(false)
+        keepService.query()
             .then((notes) => {
                 this.setState({ notes })
             })
@@ -38,24 +38,17 @@ export class KeepApp extends React.Component {
             <main className="keep-app">
                 <h2>MissKeep</h2>
                 <Switch>
-                    {noteMode === 'noteTxt' && <NoteTxt loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'noteImg' && <NoteImg loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'noteTodos' && <NoteTodos loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'noteVideo' && <NoteVideo loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteTxt' && <NoteTxt loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteImg' && <NoteImg loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteTodos' && <NoteTodos loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteVideo' && <NoteVideo loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
                 </Switch>
-                {/* {this.state.noteMode && <DynamicCmp loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>} */}
+                
 
                 <section>
-                    <NoteList notes={notes} />
+                    <NoteList notes={notes} loadNotes={this.loadNotes}/>
                 </section>
             </main>
         )
     }
 }
-
-{/* (type) => {
-                    console.log(type, this.state.noteMode)
-                    this.setState({noteMode})
-                } */}
-{/* this.setState({noteMode: type}) */ }
-{/* this.setNoteMode */ }

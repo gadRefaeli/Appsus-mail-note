@@ -1,9 +1,16 @@
-export function NotePreview({ note }) {
-    return (
+import { NotePreviewTxt } from './NotePreviewTxt.jsx'
+import { NotePreviewImg } from './NotePreviewImg.jsx'
 
-        <article className="note-preview">
-            <p>{note.info.txt}</p>
-            {note.isPinned && <p>PINNED</p>}
-        </article>
+export function NotePreview({ note, loadNotes }) { 
+    const DynamicCmp = (props) => {
+        switch (note.type) {
+           case 'NoteTxt':
+                return <NotePreviewTxt {...props} />
+            case 'NoteImg':
+                return <NotePreviewImg {...props} />
+        }
+    }
+    return (
+        <DynamicCmp note={note} loadNotes={loadNotes}/>
     )
 }
