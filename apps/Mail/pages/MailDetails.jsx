@@ -36,15 +36,20 @@ export class MailDetails extends React.Component {
 
   render() {
     const { mail } = this.state
+   
     if (!mail) return <div>Loading...</div>
+    var time=new Date(mail.sentAt).toLocaleString();
     return (
      
      <div className="container mail-details" >
-      <button onClick={this.onDeleteMail} > x</button>
-        <button onClick={() => this.props.history.push('/MailApp')} > Go back</button>
+      
          <p className="mail-details-subject">{mail.subject}</p>
          <p className="mail-details-mail"> <span>{mail.from.split('@')[0]} </span>{mail.from}</p>
          <p className="mail-details-body">{mail.body}</p>
+         <p>{time}</p>
+         <button onClick={this.onDeleteMail} > x</button>
+        <button onClick={() => this.props.history.push('/MailApp')} > Go back</button>
+        <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >reply</button> 
       </div >
 
     )

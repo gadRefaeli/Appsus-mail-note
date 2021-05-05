@@ -9,8 +9,8 @@ export class MailFilter extends React.Component {
       read: null,
       mailReadCount: 0,
       mailUnreadCount: 0
+      
     },
-
   }
 
   componentDidMount() {
@@ -22,8 +22,7 @@ export class MailFilter extends React.Component {
     })
   }
 
-
-
+  
 
   handleChange = (ev) => {
     const field = ev.target.name
@@ -43,24 +42,19 @@ export class MailFilter extends React.Component {
     this.props.onSetFilter(this.state.filterBy)
   }
 
-
-
-
   render() {
     const { search, read } = this.state.filterBy
     return (
 
       <form className="mail-filter" onSubmit={this.onFilter}>
-        <button name="read" value="null" onClick={this.handleChange} >All Mails ({this.state.mailReadCount+this.state.mailUnreadCount}) </button>
-        <button name="read" value={true} onClick={this.handleChange} >Read Mails ({this.state.mailReadCount}) </button>
-        <button name="read" value={false} onClick={this.handleChange} >Unread Mails  ({this.state.mailUnreadCount})  </button>
+        <button name="read" value="null" onClick={this.handleChange} >All Mails </button>
+        <button name="read" value={true} onClick={this.handleChange} >Read Mails</button>
+        <button name="read" value={false} onClick={this.handleChange} >Unread Mails</button>
         <div>
           <label htmlFor="bySearch">Search</label>
-          <input type="text" id="bySearch" ref={this.inputRef} name="search" value={search} onChange={this.handleChange} />
+          <input type="text" id="bySearch"  name="search" value={search} onChange={this.handleChange} />
         </div>
-        <p>
-          Loaded cars count:
-        </p>
+       
       </form>
     )
   }

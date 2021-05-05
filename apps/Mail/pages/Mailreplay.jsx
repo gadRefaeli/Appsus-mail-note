@@ -1,14 +1,36 @@
 import { MailService } from './services/mail-service.js'
 const { Link } = ReactRouterDOM
-export class MailAdd extends React.Component {
+export class Mailreplay extends React.Component {
 
   state = {
     mail: {
-      subject: '',
-      to: '',
-      body: '',
-      from: 'Me@gmail.com'
+      // subject: '',
+      // to:  'Me@gmail.com',
+      // body: '',
+      // from:''
     }
+  }
+
+
+
+  componentDidMount() {
+  
+    this.loadMail()
+
+  }
+
+  loadMail() {
+    const id = this.props.match.params.MailId;
+    console.log(id)
+    MailService.getMailById(id).then(mail => {
+      if (!mail) return this.props.history.push('/')
+      var tempMail=mail;
+      mail.to=tempMail.from;
+      mail.from=tempMail.to;
+      mail.subject=`re: ${tempMail.subject}`
+      this.setState( {mail} )
+
+    })
   }
 
 

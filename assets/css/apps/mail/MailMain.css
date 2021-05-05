@@ -38,7 +38,7 @@ width: 150px;
 .mail-preview p{
     color: black;
 }
-.mail-preview button, .mail-side-bar button,.mail-add button{
+.mail-preview button, .mail-side-bar button,.mail-add button, .mail-details button{
     padding: 5px;
     border-radius: 5px;
     border: none;
@@ -130,4 +130,12 @@ width: 150px;
 textarea[name="body"] {
  resize: none;
 
+  }
+  .mail-details{
+      margin: 30px;
+      background-color: aliceblue;
+      padding: 10px;
+  }
+  .sorting{
+      margin-top: 30px;
   }
