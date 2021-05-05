@@ -1,4 +1,4 @@
-const { Switch } = ReactRouterDOM
+const { Route, Switch } = ReactRouterDOM
 
 import { keepService } from './services/keep-service.js'
 
@@ -7,7 +7,7 @@ import { AddNoteImg } from './cmps/AddNote/AddNoteImg.jsx'
 import { AddNoteTodos } from './cmps/AddNote/AddNoteTodos.jsx'
 import { AddNoteTxt } from './cmps/AddNote/AddNoteTxt.jsx'
 import { AddNoteVideo } from './cmps/AddNote/AddNoteVideo.jsx'
-import { UpdateNote } from './cmps/UpdateNote/UpdateNote.jsx'
+import { KeepUpdate } from '../../pages/KeepUpdate.jsx'
 
 export class KeepApp extends React.Component {
     state = {
@@ -53,8 +53,10 @@ export class KeepApp extends React.Component {
                 <section>
                     <NoteList notes={notes} loadNotes={this.loadNotes} setUpdateMode={this.setUpdateMode}/>
                 </section>
+            
+                <Route component={KeepUpdate} path="/KeepApp/:KeepId" />
 
-                {/* {this.state.updateMode && <UpdateNote note={this.state.note} loadNotes={this.loadNotes}/>} */}
+            
             </main>
         )
     }

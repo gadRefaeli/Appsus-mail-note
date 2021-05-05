@@ -1,0 +1,18 @@
+.cover-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+.update-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background-color: rgb(238, 212, 212);
+}

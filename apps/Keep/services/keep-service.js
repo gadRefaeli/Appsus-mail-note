@@ -43,6 +43,15 @@ function _addNote(note) {
     return Promise.resolve(note);
 }
 
+function _updateNote(noteToUpdate) {
+    const noteIdx = gNotes.findIndex(note => {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate);
+}
+
 function _createNote({type, isPinned, info, style}) {
     let note = {
         id: utilService.makeId(),
@@ -54,7 +63,7 @@ function _createNote({type, isPinned, info, style}) {
     if (note.type === "NoteTodos") {
         const { txt } = note.info
         for (let i = 0; i < note.info.txt.length; i++) {
-            txt[i] = { id: `${note.id}-${i}`, str: txt[i], isDone: true}
+            txt[i] = { id: `${note.id}-${i}`, str: txt[i], isDone: false}
         }
     }
     return note

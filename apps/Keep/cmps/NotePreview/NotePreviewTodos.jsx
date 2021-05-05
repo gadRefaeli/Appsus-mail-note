@@ -3,7 +3,7 @@ import { keepService } from '../../services/keep-service.js'
 export class NotePreviewTodos extends React.Component {
     state = {
         note: null,
-        txt: null
+        currTxt: {}
     }
     gNote = this.props.note
 
@@ -13,32 +13,37 @@ export class NotePreviewTodos extends React.Component {
         this.props.note.info.txt.forEach(line => {
             gTxt[line.id] = line.isDone
         })
-        this.setState({txt: gTxt})
-        console.log(gTxt)
+        this.setState({currTxt: gTxt})
     }
 
-    handleInputChange(event) {
-        const target = event.target;
+    handleInputChange = ({ target}) => {
+        const field = target.name;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        
         this.setState(prevState => ({
-            txt: {
-                ...prevState.txt,
-                [name]: { value }
+            currTxt: {
+                ...prevState.currTxt,
+                [field]:  value
             }
-        })) 
+        }))
+        let currNote = this.state.note
+        let currLine = currNote.info.txt.findIndex(line => {
+            return line.id === field
+        })
+        currNote.info.txt[currLine].isDone = value
+        this.setState({note: currNote})
+        keepService.saveNote(this.state.note)
       }
     
     render() {
         const { note } = this.state
         if (!note) return <div>Loading...</div> 
-        const { txt } = note.info
+        const { currTxt } = this.state
         return (
             <article className="note-preview" key={note.id}>
-                {txt.map((line, idx) => {
-                    console.log(txt[idx])
-                    this.State
-                    return <p key={line.id}><input type="checkbox" id={line.id} name={line.id}  checked={txt[idx].isDone} onChange={this.handleInputChange}/>
+                {note.info.txt.map(line => {
+                    const lineId = line.id
+                    return <p key={line.id}><input type="checkbox" id={line.id} name={line.id}  checked={currTxt[lineId]} onChange={this.handleInputChange}/>
                     <label htmlFor={line.id}>{' ' + line.str}</label></p>
                 })}
                 {/* {this.props.note.isPinned && <p>PINNED</p>} */}
