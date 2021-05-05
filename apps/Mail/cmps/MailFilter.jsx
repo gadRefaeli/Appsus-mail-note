@@ -1,17 +1,36 @@
+import { eventBusService } from '../services/event-bus-service.js'
+import { MailService } from '../services/mail-service.js'
 export class MailFilter extends React.Component {
+
 
   state = {
     filterBy: {
       search: '',
-      read: false,
-      unread: false,
-    }
+      read: null,
+      mailReadCount: 0,
+      mailUnreadCount: 0
+    },
+
   }
+
+  componentDidMount() {
+    this.removeEvent = eventBusService.on('mail-read-count', (mailReadCount) => {
+      this.setState({ mailReadCount })
+    })
+    this.removeEvent = eventBusService.on('mail-unread-count', (mailUnreadCount) => {
+      this.setState({ mailUnreadCount })
+    })
+  }
+
+
 
 
   handleChange = (ev) => {
     const field = ev.target.name
-    const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
+    let value = ev.target.value;
+    if (value === 'true') value = true;
+    if (value === 'false') value = false;
+    if (value === 'null') value = null;
     this.setState(({ filterBy }) => ({
       filterBy: { ...filterBy, [field]: value }
     }), () => {
@@ -24,17 +43,24 @@ export class MailFilter extends React.Component {
     this.props.onSetFilter(this.state.filterBy)
   }
 
-  render() {
-    const { search, read, unread } = this.state.filterBy
-    return (
-      <form className="mail-filter" onSubmit={this.onFilter}>
-        <label htmlFor="bySearch">Search</label>
-        <input type="text" id="bySearch" ref={this.inputRef} name="search" value={search} onChange={this.handleChange} />
 
-        <label htmlFor="minSpeed">Read Mails</label>
-        <input type="select" id="read" name="read" value="read" onChange={this.handleChange} />
-        <label htmlFor="minSpeed">Unread Mails</label>
-        <input type="select" id="unread" name="unread" value="unread" onChange={this.handleChange} />
+
+
+  render() {
+    const { search, read } = this.state.filterBy
+    return (
+
+      <form className="mail-filter" onSubmit={this.onFilter}>
+        <button name="read" value="null" onClick={this.handleChange} >All Mails ({this.state.mailReadCount+this.state.mailUnreadCount}) </button>
+        <button name="read" value={true} onClick={this.handleChange} >Read Mails ({this.state.mailReadCount}) </button>
+        <button name="read" value={false} onClick={this.handleChange} >Unread Mails  ({this.state.mailUnreadCount})  </button>
+        <div>
+          <label htmlFor="bySearch">Search</label>
+          <input type="text" id="bySearch" ref={this.inputRef} name="search" value={search} onChange={this.handleChange} />
+        </div>
+        <p>
+          Loaded cars count:
+        </p>
       </form>
     )
   }

@@ -9,7 +9,6 @@ export function MailList({ mails }) {
      
  
   <div className="mail-list">
-  <Link to="/MailApp/compose">compose</Link>
       { mails.map(mail => <MailPreview name={mail} key={mail.id}/>)}
     </div>
   </div>

@@ -22,7 +22,11 @@ a{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     
+}
+.mail-preview p{
+width: 150px;
 }
 .reading{
     background-color: rgb(179, 172, 172);
@@ -34,7 +38,7 @@ a{
 .mail-preview p{
     color: black;
 }
-.mail-preview button{
+.mail-preview button, .mail-side-bar button,.mail-add button{
     padding: 5px;
     border-radius: 5px;
     border: none;
@@ -54,7 +58,6 @@ a{
     margin-top: 30px;
     display: flex;
     align-content: center;
-    justify-content: center;
 }
 .first-chart{
     width:50px;
@@ -69,3 +72,62 @@ a{
     margin:20px;
 
 }
+ .mail-side-bar{
+     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-right: 100px;
+    margin-left: 50px;
+   justify-content: stretch;
+}
+.mail-filter div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 150px;
+}
+.mail-filter input{
+    width: 105px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color:  rgb(116, 228, 125);
+    margin: 5px;
+    background-color: rgba(116, 228, 125, 0.556);
+}
+.mail-side-bar button{
+    width: 150px;
+    
+}
+.mail-side-bar button a{
+    color: black;
+}
+
+.mail-add{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    align-self: center;
+    
+}
+.mail-add>*{
+    margin-top: 10px;
+    width: 150px;
+}
+.mail-add input, textarea[name="body"]{
+    width: 500px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color:  rgb(126, 126, 126);
+    margin: 5px;
+    background-color: rgba(255, 255, 255, 0.556);
+}
+
+
+textarea[name="body"] {
+ resize: none;
+
+  }
