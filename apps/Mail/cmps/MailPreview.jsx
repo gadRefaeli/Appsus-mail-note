@@ -40,8 +40,7 @@ export class MailPreview extends React.Component {
     if(this.state.removed) return (null)
   return (
     <article className={`mail-preview ${readingOn}`}>
-      <button onClick={this.taggleIsReading}> Mark read</button>
-      <button onClick={this.removePreviewedMail}> x</button>
+      
       <div className="first-chart">
         {mail.from.charAt(0).toUpperCase()}
       </div>
@@ -49,10 +48,11 @@ export class MailPreview extends React.Component {
         <p>{mail.from.split('@')[0]} </p>
         <p>{mail.from}</p>
         <p>{mail.subject}</p>
-        <p>{mail.body.substring(0, 30) + '...'}</p>
+        <p>{mail.body.substring(0, 15) + '...'}</p>
         <p>{mail.sentAt}</p>
-
       </Link>
+      <button onClick={this.taggleIsReading}> Mark read</button>
+      <button onClick={this.removePreviewedMail}> x</button>
     </article>
   )
   }

@@ -35,13 +35,13 @@ export class MailAdd extends React.Component {
     return (
       <form className="mail-add" onSubmit={this.onSaveMail}>
         <label>subject
-          <input type="text" name="subject" value={subject} onChange={this.handleChange} />
+          <input type="text" name="subject" value={subject} onChange={this.handleChange}required />
         </label>
         <label>to
-          <input type="text" name="to" value={to} onChange={this.handleChange} />
+          <input type="text" name="to" value={to} onChange={this.handleChange}required />
         </label>
         <label>body
-          <input type="text" name="body" value={body} onChange={this.handleChange} />
+        <textarea type="text" name="body" cols="40" rows="10" value={body} onChange={this.handleChange}required></textarea>
         </label>
         {/* <label>from
           <input type="text" name="from" value={from} onChange={this.handleChange} />
