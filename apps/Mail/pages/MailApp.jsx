@@ -4,6 +4,7 @@ import { MailList } from '../cmps/MailList.jsx'
 import { MailFilter } from '../cmps/MailFilter.jsx'
 import { eventBusService } from '../services/event-bus-service.js'
 export class MailApp extends React.Component {
+   
     removeEvent;
     state = {
         mails: null,
@@ -14,73 +15,71 @@ export class MailApp extends React.Component {
         sortBy: 'date',
         allMailCount: null,
         readMailCount: null,
-        unreadMailCount: null
-
-        
+        unreadMailCount: null,
     }
-      
 
+    getMailCount=()=>{
+        this.setState({ readMailCount: MailService.getMailLengthByFilter(true) },eventBusService.emit('mail-read-count', this.state.readMailCount))
+        this.setState({ unreadMailCount: MailService.getMailLengthByFilter(false) },eventBusService.emit('mail-unread-count', this.state.unreadMailCount))   
+    }
 
-    getMailCount(){
-        this.setState({readMailCount:MailService.getMailLengthByFilter(true)})
-        eventBusService.emit('mail-read-count', this.state.readMailCount)
-        this.setState({unreadMailCount:MailService.getMailLengthByFilter(false)}) 
-        eventBusService.emit('mail-unread-count', this.state.unreadMailCount)
-      }
 
     componentDidMount() {
         this.loadMails();
-        this.getMailCount()
+        this.getMailCount() 
     }
 
-    componentDidUpdate(){
-      
-
-
-        
-    }
 
     loadMails() {
-        
+
         MailService.query(this.state.filterBy, this.state.sortBy)
             .then((mails) => {
                 this.setState({ mails })
                 this.getMailCount()
                 eventBusService.emit('mail-count', mails.length)
             })
-            this.getMailCount();
+            
     }
 
     onSetFilter = (filterBy) => {
-
         this.setState({ filterBy: { ...this.state.filterBy, ...filterBy } }, this.loadMails)
-
     }
 
     SortMails = (ev) => {
         const sortBy = ev.target.name
-        console.log(sortBy)
         this.setState({ sortBy }, this.loadMails)
     }
-
-    render() {
+    removePreviewedMail= (id) =>{
+        MailService.removeMail(id)
+        this.getMailCount()
+      }
+    
+    
+      taggleIsReading = (id) =>{
+        MailService.taggleReading(id)
+        this.getMailCount()
+      }
+      render() {
         const { mails } = this.state
         if (!mails) return <div>Loading...</div>
 
         return (
             <section className="Mail-list-section">
-                <div className="sorting">
+               
+                
+
+                <div className="mail-side-bar">
+                    <button><Link to="/MailApp/compose">compose</Link> </button>
+                    <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
+                    <p> Unread mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
+                    <div className="sorting">
                     <p> Sort by:</p>
                     <button className="sort-by-title" name="subject" onClick={this.SortMails}> Title </button>
                     <button className="sort-by-date" name="date" onClick={this.SortMails}> Date </button>
                 </div>
-
-                <div className="mail-side-bar">
-                    <button><Link to="/MailApp/compose">compose</Link> </button>
-                    <MailFilter onSetFilter={this.onSetFilter} />
                 </div>
-
-                <MailList mails={mails} />
+                
+                <MailList mails={mails} removePreviewedMail={this.removePreviewedMail} taggleIsReading={this.taggleIsReading} />
             </section>
         )
     }

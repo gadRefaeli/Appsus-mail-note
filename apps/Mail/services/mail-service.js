@@ -7,7 +7,8 @@ export const MailService = {
   taggleReading,
   updateIfReading,
   addMail,
-  getMailLengthByFilter
+  getMailLengthByFilter,
+  getNiceDate
 
 }
 var gSortingBy = 'subject';
@@ -21,7 +22,6 @@ function query(filterBy, sortBy) {
   if (!sortBy) return Promise.resolve(gMails)
   gSortingBy = sortBy;
   getMailesForDisplay()
-  console.log(gMails)
   if (!filterBy) return Promise.resolve(gMails)
   var { search, read } = filterBy
   const filteredMails = gMails.filter(mail => {
@@ -39,14 +39,14 @@ function query(filterBy, sortBy) {
 
 function getMailesForDisplay() {
   if (gSortingBy === 'subject') {
-    console.log('sub')
+    
     gMails.sort(function (mail1, mail2) {
       if (mail1.subject.toLowerCase() > mail2.subject.toLowerCase()) return 1;
       if (mail2.subject.toLowerCase() > mail1.subject.toLowerCase()) return -1;
     });
 
   } else if (gSortingBy === 'date') {
-    console.log('sdateb')
+   
     gMails.sort(function (mail1, mail2) {
       if (+mail1.sentAt > +mail2.sentAt) return 1;
       if (+mail2.sentAt > +mail1.sentAt) return -1;
@@ -86,7 +86,7 @@ function _createMail(subject, to, body, from) {
     to,
     body,
     isRead: false,
-    sentAt: new Date().getTime(),
+    sentAt:new Date().getTime(),
     from
 
   }
@@ -142,4 +142,11 @@ function getMailLengthByFilter(filter) {
     if (mail.isRead === filter) length++;
   });
   return length;
+}
+function getNiceDate(dateObj){
+  var month = dateObj.getMonth() + 1; //months from 1-12
+var day = dateObj.getDate();
+var year = dateObj.getFullYear();
+
+return newdate = year + "/" + month + "/" + day;
 }

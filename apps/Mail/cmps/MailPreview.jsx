@@ -5,7 +5,8 @@ export class MailPreview extends React.Component {
   state = {
     mail: null,
     removed: false,
-    isRead:null
+    isRead:null,
+    count: null
   }
   componentDidMount() {
     this.loadMail()
@@ -15,28 +16,28 @@ export class MailPreview extends React.Component {
     const mail =this.props.name
     this.setState({ mail })
     this.setState({isRead:mail.isRead})
+   
+  }
+  componentDidUpdat(){
+    this.setState({count: this.props.getMailCount})
   }
 
-  removePreviewedMail= () =>{
-    MailService.removeMail(this.props.name.id)
-    .then(() => {
+  removePreviewedMail =()=>{
+    this.props.removePreviewedMail(this.props.name.id)
       this.setState({removed: true })
-    })
   }
 
 
-
-  taggleIsReading = () =>{
-    MailService.taggleReading(this.props.name.id)
-    .then(() => {
+  taggleIsReading =()=>{
+    this.props.taggleIsReading(this.props.name.id)
       this.setState({isRead:!this.state.isRead})
-    })
   }
-
 
   render() {
     var readingOn=(this.state.isRead)? 'reading':'not-reading';
     var mail =this.props.name
+    
+    var time=new Date(mail.sentAt).toLocaleString();
     if(this.state.removed) return (null)
   return (
     <article className={`mail-preview ${readingOn}`}>
@@ -49,9 +50,9 @@ export class MailPreview extends React.Component {
         <p>{mail.from}</p>
         <p>{mail.subject}</p>
         <p>{mail.body.substring(0, 15) + '...'}</p>
-        <p>{mail.sentAt}</p>
+        <p>{time}</p>
       </Link>
-      <button onClick={this.taggleIsReading}> Mark read</button>
+      <button onClick={ this.taggleIsReading}> Mark read</button>
       <button onClick={this.removePreviewedMail}> x</button>
     </article>
   )
