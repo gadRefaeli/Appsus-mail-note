@@ -1,32 +1,38 @@
-.note-txt-container {
+.add-note-container {
     background-color: #fff;
     width: 600px;
     margin-bottom: 30px;
 }
 
-.note-txt-controller {
+.add-note-controller {
     display: flex;
     justify-content: space-between;
 }
 
-.note-txt-controller > * {
+.add-note-controller > * {
     margin: 10px;
 }
 
-.nav-note {
+.nav-add-note {
     width: 250px
 }
 
-.note-txt-controller .nav-note > *{
+.add-note-controller .nav-add-note > *{
     margin-right: 10px;
     padding: 10px;
 }
 
-.input-note-txt {
+.input-add-note {
     padding: 10px;
 }
 
-.nav-note .btn-active {
+.textarea-add-note {
+    resize: none;
+    padding: 10px;
+    height: 100px;
+}
+
+.nav-add-note .btn-active {
     background-color: #000;
     color: white;
 }

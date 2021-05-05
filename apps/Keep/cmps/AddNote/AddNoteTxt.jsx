@@ -1,6 +1,6 @@
 import { keepService } from '../services/keep-service.js'
 
-export class NoteTxt extends React.Component {
+export class AddNoteTxt extends React.Component {
     state = {
         note: {
             type: 'NoteTxt',
@@ -30,6 +30,7 @@ export class NoteTxt extends React.Component {
 
     onSaveNote = () => {
         const { note } = this.state
+        note.info.txt = note.info.txt.split('\n')
         let currNote = note
         keepService.saveNote(currNote)
             .then(() => {
@@ -40,10 +41,10 @@ export class NoteTxt extends React.Component {
     render() {
         const { txt } = this.state.note.info
         return (
-            <section className="note-txt-container">
-                <div className="note-txt-controller">
-                <input className="input-note-txt" type="text" ref={this.inputRef} name="txt" value={txt} placeholder="Enter text..." onChange={this.handleChange} />
-                <nav className="nav-note">
+            <section className="add-note-container">
+                <div className="add-note-controller">
+                <textarea className="textarea-add-note" ref={this.inputRef} name="txt" value={txt} placeholder="Enter text..." onChange={this.handleChange} />
+                <nav className="nav-add-note">
                     <button className="btn-active" onClick={() => {this.props.setNoteMode('NoteTxt')}}>A</button>
                     <button onClick={() => {this.props.setNoteMode('NoteImg')}}>Img</button>
                     <button onClick={() => {this.props.setNoteMode('NoteVideo')}}>video</button>

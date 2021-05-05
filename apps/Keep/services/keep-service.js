@@ -44,13 +44,20 @@ function _addNote(note) {
 }
 
 function _createNote({type, isPinned, info, style}) {
-    return {
+    let note = {
         id: utilService.makeId(),
         type,
         isPinned,
         info,
         style
     } 
+    if (note.type === "NoteTodos") {
+        const { txt } = note.info
+        for (let i = 0; i < note.info.txt.length; i++) {
+            txt[i] = { id: `${note.id}-${i}`, str: txt[i], isDone: true}
+        }
+    }
+    return note
 }
 
 function _createNotes() {
@@ -59,21 +66,30 @@ function _createNotes() {
         notes = [
             {
                 id: utilService.makeId(),
-                type: "NoteTxt",
+                type: 'NoteTxt',
                 isPinned: true,
                 info: {
-                    txt: "Welcome to MissKeep!"
+                    txt: ['Welcome to MissKeep!']
                 },
                 style: {
-                    backgroundColor: "#00d"
+                    backgroundColor: '#00d'
                 }
             },
             {
                 id: utilService.makeId(),
-                type: "NoteTxt",
+                type: 'NoteTxt',
                 isPinned: true,
                 info: {
-                    txt: "Enjoy our Keep!"
+                    txt: ['Enjoy our Keep!']
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteVideo',
+                isPinned: true,
+                info: {
+                    url: 'https://player.vimeo.com/external/207598612.sd.mp4?s=628bc4db722909e48d507cc5f970f60dbbf6eb4b&profile_id=164',
+                    title: 'Let\'s write notes!'
                 }
             }
         ]        

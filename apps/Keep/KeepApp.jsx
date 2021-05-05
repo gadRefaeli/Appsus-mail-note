@@ -3,15 +3,17 @@ const { Switch } = ReactRouterDOM
 import { keepService } from './services/keep-service.js'
 
 import { NoteList } from './cmps/NoteList.jsx'
-import { NoteImg } from './cmps/NoteImg.jsx'
-import { NoteTodos } from './cmps/NoteTodos.jsx'
-import { NoteTxt } from './cmps/NoteTxt.jsx'
-import { NoteVideo } from './cmps/NoteVideo.jsx'
+import { AddNoteImg } from './cmps/AddNote/AddNoteImg.jsx'
+import { AddNoteTodos } from './cmps/AddNote/AddNoteTodos.jsx'
+import { AddNoteTxt } from './cmps/AddNote/AddNoteTxt.jsx'
+import { AddNoteVideo } from './cmps/AddNote/AddNoteVideo.jsx'
+import { UpdateNote } from './cmps/UpdateNote/UpdateNote.jsx'
 
 export class KeepApp extends React.Component {
     state = {
         notes: null,
-        noteMode: 'NoteTxt'
+        noteMode: 'NoteTxt',
+        updateMode: false
     }
 
     componentDidMount() {
@@ -29,6 +31,10 @@ export class KeepApp extends React.Component {
         this.setState({noteMode: type})
     }
 
+    setUpdateMode = (note) => {
+        this.setState({updateMode: note})
+    }
+
     render() {
         const { notes, noteMode } = this.state
 
@@ -38,16 +44,17 @@ export class KeepApp extends React.Component {
             <main className="keep-app">
                 <h2>MissKeep</h2>
                 <Switch>
-                    {noteMode === 'NoteTxt' && <NoteTxt loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'NoteImg' && <NoteImg loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'NoteTodos' && <NoteTodos loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
-                    {noteMode === 'NoteVideo' && <NoteVideo loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteTxt' && <AddNoteTxt loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteImg' && <AddNoteImg loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteTodos' && <AddNoteTodos loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
+                    {noteMode === 'NoteVideo' && <AddNoteVideo loadNotes={this.loadNotes} setNoteMode={this.setNoteMode}/>}
                 </Switch>
                 
-
                 <section>
-                    <NoteList notes={notes} loadNotes={this.loadNotes}/>
+                    <NoteList notes={notes} loadNotes={this.loadNotes} setUpdateMode={this.setUpdateMode}/>
                 </section>
+
+                {/* {this.state.updateMode && <UpdateNote note={this.state.note} loadNotes={this.loadNotes}/>} */}
             </main>
         )
     }

@@ -15,3 +15,9 @@
     right: 0;
     bottom: 0;
 }
+
+.note-preview .btn-update {
+    position: absolute;
+    right: 60px;
+    bottom: 0;
+}
