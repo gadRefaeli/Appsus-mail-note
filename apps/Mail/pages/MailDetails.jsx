@@ -57,9 +57,8 @@ export class MailDetails extends React.Component {
           <button onClick={() => this.props.history.push('/MailApp')}  > <img src="/assets/img/back.png" width="20"></img>Go back</button>
           <button onClick={this.onDeleteMail} > <img src="/assets/img/trash-white.png" width="20"></img>Delete</button>
           
-         {/* <MailToNote mail={mail} /> */}
           <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/replay-01.png" width="20"></img>Reply</button>
-          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/notes-01.png" width="30"></img>Save as note</button>
+          <button ><Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}><img src="/assets/img/notes-01.png" width="30"></img>Save as note</Link></button>
           
         </div>
        
