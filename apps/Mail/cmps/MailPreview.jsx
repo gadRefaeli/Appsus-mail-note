@@ -40,6 +40,7 @@ export class MailPreview extends React.Component {
 
   render() {
     var readingOn = (this.state.isRead) ? 'reading' : 'not-reading';
+    var env = (this.state.isRead) ? 'close-env' : 'open-env';
     var stared = (this.state.isStar) ? 'stared' : 'not-stared';
     var mail = this.props.name
 
@@ -47,22 +48,30 @@ export class MailPreview extends React.Component {
     if (this.state.removed) return (null)
     return (
       <article className={`mail-preview ${readingOn}`}>
+        <div className="first-chart-div"> 
         <span className="first-chart">{mail.from.charAt(0).toUpperCase()}</span>
+        </div>
+ 
         <div className="details-preview" >
           <Link to={`/MailApp/${mail.id}/`}>
-            <p className="details-preview-from-title">{mail.from.split('@')[0]} <span className="details-preview-time" >{time}</span> </p>
-            <span className="details-preview-from" >{mail.from}</span><br></br>
-            <span className="details-preview-subject" >{mail.subject}</span><br></br>
-            <span className="details-preview-body" >{mail.body.substring(0, 55) + '...'}</span>
-
+            <span className="details-preview-from-title">{mail.from.split('@')[0]}  </span>
+            <span className="details-preview-from" >{`<${mail.from}>`}</span><br></br>
+            <p className="details-preview-time" >{time}</p>
+            
           </Link>
         </div>
-
-
-        <button onClick={this.taggleIsReading}> Mark read</button>
-        <button className={stared} onClick={this.taggleIsStared}>star</button>
-        <button onClick={this.removePreviewedMail}> x</button>
-
+        <div className="inner-details-preview" >
+          <Link to={`/MailApp/${mail.id}/`}>
+            <span className="details-preview-subject" >{mail.subject}</span><br></br>
+            <span className="details-preview-body" >{mail.body.substring(0, 200) + '...'}</span>
+          </Link>
+        </div>
+          <button className={`${env} taggle-reading`} onClick={this.taggleIsReading}> </button>
+         
+          <button className= {`${stared} marker`} onClick={this.taggleIsStared}></button>
+         
+          <button  className="close-preview" onClick={this.removePreviewedMail}> </button>
+       
       </article>
     )
   }
