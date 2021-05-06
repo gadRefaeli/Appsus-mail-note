@@ -40,21 +40,6 @@ export class MailDetails extends React.Component {
     if (!mail) return <div>Loading...</div>
     var time = new Date(mail.sentAt).toLocaleString();
     return (
-<<<<<<< HEAD
-     
-     <div className="container mail-details" >
-      
-         <p className="mail-details-subject">{mail.subject}</p>
-         <p className="mail-details-mail"> <span>{mail.from.split('@')[0]} </span>{mail.from}</p>
-         <p className="mail-details-body">{mail.body}</p>
-         <p>{time}</p>
-         <button onClick={this.onDeleteMail} > x</button>
-        <button onClick={() => this.props.history.push('/MailApp')} > Go back</button>
-       <Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}>save as note</Link> 
-        {/* <MailToNote mail={mail} /> */}
-        <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >reply</button> 
-     
-=======
 
       <div className="mail-details" >
          <div className="mail-main-bar">
@@ -72,15 +57,13 @@ export class MailDetails extends React.Component {
           <button onClick={() => this.props.history.push('/MailApp')}  > <img src="/assets/img/back.png" width="20"></img>Go back</button>
           <button onClick={this.onDeleteMail} > <img src="/assets/img/trash-white.png" width="20"></img>Delete</button>
           
-         {/* <MailToNote mail={mail} /> */}
           <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/replay-01.png" width="20"></img>Reply</button>
-          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/notes-01.png" width="30"></img>Save as note</button>
+          <button ><Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}><img src="/assets/img/notes-01.png" width="30"></img>Save as note</Link></button>
           
         </div>
        
 
 
->>>>>>> d96caf35d735c4a800d62ee49d676325df134f21
       </div >
 
     )
