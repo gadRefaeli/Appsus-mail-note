@@ -116,7 +116,7 @@ padding-right: 20px;}
     box-shadow: 1px 0px 5px rgb(190 190 191 / 73%);
 }
 
-.mail-add button, .mail-details button {
+/* .mail-add button, .mail-details button {
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -125,7 +125,7 @@ padding-right: 20px;}
     font-size: 18px;
     margin-top: 15px;
   
-}
+} */
 
 
 
@@ -238,50 +238,27 @@ padding-right: 20px;}
 }
 
 
- 
-.mail-side-bar button:active {
-    background-color:  #f5f6f8;
-   
-   
-}
-
 
 .mail-side-bar button a {
     color: black;
 }
 
-.mail-add {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    align-self: center;
-}
-
-.mail-add>* {
-    margin-top: 10px;
-    width: 150px;
-}
 
 .mail-add input, textarea[name="body"] {
-    width: 500px;
+    width: 50vw;
     padding: 5px;
     border-radius: 5px;
     border-color: rgb(126, 126, 126);
-    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     background-color: rgba(255, 255, 255, 0.556);
 }
 
 textarea[name="body"] {
     resize: none;
 }
-
-.mail-details {
-    margin: 30px;
-    background-color: aliceblue;
-    padding: 10px;
+.mail-add span{
+font-family:b;
 }
 
 
@@ -361,6 +338,7 @@ background-color: #f5f6f8;
 }
 .mail-side-bar h1{
    margin-bottom: 20px;
+   font-size: 24px;
 }
 .bar-unread{
     margin-top: 10px;
@@ -405,3 +383,52 @@ background-color: #f5f6f8;
   .sort-by-date { grid-area: sort-by-date; }
   .sort-by-title { grid-area: sort-by-title; }
   .search-div { grid-area: search-div; }
+
+.mail-details{
+display: flex;
+flex-direction: row-reverse;
+}
+.mail-main-bar-inner{
+    background-color:#f5f6f8;
+    padding: 8px;
+    border-radius: 8px;
+    margin:20px ;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80vw;
+    padding: 60px ;
+
+    
+}
+.mail-details-subject{
+    font-family: c;
+    font-size: 30px;
+    margin-bottom: 16px;
+    
+}
+.mail-details-time{
+    font-family: a;
+    font-size: 13px;
+    
+}
+
+.mail-details-body{
+
+    width: 70%;
+}
+.mail-details-btn button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.mail-add input ,.mail-add textarea{
+    font-family: a;
+    padding-left: 10px;
+    border-color: #9e999967;
+}
+.title-mail-details{
+padding-bottom: 10px;
+}

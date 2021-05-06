@@ -44,20 +44,29 @@ export class MailAdd extends React.Component {
     const { subject, to, body, from } = this.state.mail
     return (
       <div className="compose">
-        <form className="mail-add" onSubmit={this.onSaveMail}>
-          <label>subject
+
+        <form className="mail-add mail-details" onSubmit={this.onSaveMail}>
+          <div className="mail-main-bar">
+            <div className="mail-main-bar-inner">
+            <h1 className="title-mail-details">Compose new mail:</h1>
+              <label><span>Subject</span><br/>
           <input type="text" name="subject" value={subject} onChange={this.handleChange} required />
-          </label>
-          <label>to
+              </label>
+              <label><span>To</span><br/>
           <input type="text" name="to" value={to} onChange={this.handleChange} required />
-          </label>
-          <label>body
+              </label>
+              <label><span>Body</span><br/>
         <textarea type="text" name="body" cols="40" rows="10" value={body} onChange={this.handleChange} required></textarea>
-          </label>
-          <button type="submit">send</button>
-          <button onClick={() => this.props.history.push('/MailApp')}>cancle</button>
+              </label>
+            </div>
+          </div>
+          <div className="mail-side-bar  mail-details-btn">
+            <h1>Mailbox</h1>
+            <button type="submit"><img src="/assets/img/send-01.png" width="30"></img>Send</button>
+            <button onClick={() => this.props.history.push('/MailApp')}> <img src="/assets/img/back.png" width="20"></img>Go back</button>
+          </div>
         </form>
-      </div>
+      </div >
 
     )
   }

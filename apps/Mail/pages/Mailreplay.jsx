@@ -56,22 +56,30 @@ export class Mailreplay extends React.Component {
   render() {
     const { subject, to, body, from } = this.state.mail
     return (
-      <form className="mail-add" onSubmit={this.onSaveMail}>
-        <label>subject
-          <input type="text" name="subject" value={subject} onChange={this.handleChange}required />
-        </label>
-        <label>to
-          <input type="text" name="to" value={to} onChange={this.handleChange}required />
-        </label>
-        <label>body
-        <textarea type="text" name="body" cols="40" rows="10" value={body} onChange={this.handleChange}required></textarea>
-        </label>
-    
+      <div className="compose">
 
-        <button type="submit">send</button>
-        <button onClick= {() =>this.props.history.push('/MailApp')}>cancle</button>
-       
+      <form className="mail-add mail-details" onSubmit={this.onSaveMail}>
+        <div className="mail-main-bar">
+          <div className="mail-main-bar-inner">
+          <h1 className="title-mail-details">Replay mail:</h1>
+            <label><span>Subject</span><br/>
+        <input type="text" name="subject" value={subject} onChange={this.handleChange} required />
+            </label>
+            <label><span>To</span><br/>
+        <input type="text" name="to" value={to} onChange={this.handleChange} required />
+            </label>
+            <label><span>Body</span><br/>
+      <textarea type="text" name="body" cols="40" rows="10" value={body} onChange={this.handleChange} required></textarea>
+            </label>
+          </div>
+        </div>
+        <div className="mail-side-bar  mail-details-btn">
+          <h1>Mailbox</h1>
+          <button type="submit"><img src="/assets/img/send-01.png" width="30"></img>Send</button>
+          <button onClick={() => this.props.history.push('/MailApp')}> <img src="/assets/img/back.png" width="20"></img>Go back</button>
+        </div>
       </form>
+    </div >
     )
   }
 }
