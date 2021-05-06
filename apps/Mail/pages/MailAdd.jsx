@@ -29,7 +29,22 @@ export class MailAdd extends React.Component {
      return this.props.history.push('/MailApp')
     })
   }
-
+  // sort(mail,sortingBy) {
+  //   if (sortingBy === 'subject') {
+      
+  //     mail.sort(function (mail1, mail2) {
+  //       if (mail1.subject.toLowerCase() > mail2.subject.toLowerCase()) return 1;
+  //       if (mail2.subject.toLowerCase() > mail1.subject.toLowerCase()) return -1;
+  //     });
+  
+  //   } else if (sortingBy === 'date') {
+     
+  //     mail.sort(function (mail1, mail2) {
+  //       if (+mail1.sentAt > +mail2.sentAt) return 1;
+  //       if (+mail2.sentAt > +mail1.sentAt) return -1;
+  //     });
+  //   }
+  // }
 
   render() {
     const { subject, to, body, from } = this.state.mail

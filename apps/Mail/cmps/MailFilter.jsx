@@ -7,24 +7,28 @@ export class MailFilter extends React.Component {
     filterBy: {
       search: '',
       read: null,
+      star:false,
       mailReadCount: 0,
       mailUnreadCount: 0
       
     },
   }
 
-  componentDidMount() {
-    this.removeEvent = eventBusService.on('mail-read-count', (mailReadCount) => {
-      this.setState({ mailReadCount })
-    })
-    this.removeEvent = eventBusService.on('mail-unread-count', (mailUnreadCount) => {
-      this.setState({ mailUnreadCount })
-    })
-  }
+  // componentDidMount() {
+  //   this.removeEvent = eventBusService.on('mail-read-count', (mailReadCount) => {
+  //     this.setState({ mailReadCount })
+  //   })
+  //   this.removeEvent = eventBusService.on('mail-unread-count', (mailUnreadCount) => {
+  //     this.setState({ mailUnreadCount })
+  //   })
+  // }
 
   
 
   handleChange = (ev) => {
+    this.setState(({ filterBy }) => ({
+      filterBy: { ...filterBy, ['star']: false}
+    }))
     const field = ev.target.name
     let value = ev.target.value;
     if (value === 'true') value = true;
@@ -35,6 +39,7 @@ export class MailFilter extends React.Component {
     }), () => {
       this.props.onSetFilter(this.state.filterBy)
     })
+   
   }
 
   onFilter = (ev) => {
@@ -43,13 +48,14 @@ export class MailFilter extends React.Component {
   }
 
   render() {
-    const { search, read } = this.state.filterBy
+    const { search, read,star } = this.state.filterBy
     return (
 
       <form className="mail-filter" onSubmit={this.onFilter}>
         <button name="read" value="null" onClick={this.handleChange} >All Mails </button>
         <button name="read" value={true} onClick={this.handleChange} >Read Mails</button>
         <button name="read" value={false} onClick={this.handleChange} >Unread Mails</button>
+        <button name="star" value={true} onClick={this.handleChange} >Stared Mails</button>
         <div>
           <label htmlFor="bySearch">Search</label>
           <input type="text" id="bySearch"  name="search" value={search} onChange={this.handleChange} />

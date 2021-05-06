@@ -8,10 +8,11 @@ export const MailService = {
   updateIfReading,
   addMail,
   getMailLengthByFilter,
-  getNiceDate
+  getNiceDate,
+  taggleStar
 
 }
-var gSortingBy = 'subject';
+var gSortingBy = 'date';
 var STORAGE_KEY = 'mailDB';
 var gMails;
 
@@ -20,14 +21,15 @@ _createMails()
 function query(filterBy, sortBy) {
   var gMails = storageService.loadFromStorage(STORAGE_KEY)
   if (!sortBy) return Promise.resolve(gMails)
-  gSortingBy = sortBy;
-  getMailesForDisplay()
+
   if (!filterBy) return Promise.resolve(gMails)
-  var { search, read } = filterBy
+  var { search, read, star } = filterBy
   const filteredMails = gMails.filter(mail => {
+    console.log(mail.isStar)
+    if(star) return mail.isStar === true
     if (read !== null) {
       return (mail.body.includes(search) || mail.subject.includes(search)) &&
-        mail.isRead == read
+        mail.isRead === read
     }
     return mail.body.includes(search) || mail.subject.includes(search)
   })
@@ -37,23 +39,9 @@ function query(filterBy, sortBy) {
 
 
 
-function getMailesForDisplay() {
-  if (gSortingBy === 'subject') {
-    
-    gMails.sort(function (mail1, mail2) {
-      if (mail1.subject.toLowerCase() > mail2.subject.toLowerCase()) return 1;
-      if (mail2.subject.toLowerCase() > mail1.subject.toLowerCase()) return -1;
-    });
 
-  } else if (gSortingBy === 'date') {
-   
-    gMails.sort(function (mail1, mail2) {
-      if (+mail1.sentAt > +mail2.sentAt) return 1;
-      if (+mail2.sentAt > +mail1.sentAt) return -1;
-    });
-  }
-  _saveMailsToStorage()
-}
+
+
 function getMailById(mailId) {
   var mail = gMails.find(function (mail) {
     return mailId === mail.id
@@ -75,7 +63,7 @@ function _createMails() {
   }
 
   gMails = mails;
-  getMailesForDisplay()
+  _saveMailsToStorage()
 
 }
 
@@ -86,9 +74,9 @@ function _createMail(subject, to, body, from) {
     to,
     body,
     isRead: false,
-    sentAt:new Date().getTime(),
-    from
-
+    sentAt: new Date().getTime(),
+    from,
+    isStar: false
   }
 
   return mail;
@@ -118,6 +106,15 @@ function taggleReading(mailId) {
   return Promise.resolve()
 }
 
+function taggleStar(mailId) {
+  var mailIdx = gMails.findIndex(mail => {
+    return mailId === mail.id
+  })
+  gMails[mailIdx].isStar = !gMails[mailIdx].isStar;
+  _saveMailsToStorage()
+  return Promise.resolve()
+}
+
 function updateIfReading(mailId) {
   var mailIdx = gMails.findIndex(mail => {
     return mailId === mail.id
@@ -143,10 +140,10 @@ function getMailLengthByFilter(filter) {
   });
   return length;
 }
-function getNiceDate(dateObj){
+function getNiceDate(dateObj) {
   var month = dateObj.getMonth() + 1; //months from 1-12
-var day = dateObj.getDate();
-var year = dateObj.getFullYear();
+  var day = dateObj.getDate();
+  var year = dateObj.getFullYear();
 
-return newdate = year + "/" + month + "/" + day;
+  return newdate = year + "/" + month + "/" + day;
 }
