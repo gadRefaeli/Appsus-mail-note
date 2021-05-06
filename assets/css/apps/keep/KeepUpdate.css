@@ -9,10 +9,27 @@
 
 .update-modal {
     position: fixed;
-    top: 50%;
+    top: -100%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 1200px);
+    /* transition: translate 2s; */
     width: 500px;
     height: 500px;
     background-color: rgb(238, 212, 212);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.update-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea-edit-note {
+    resize: none;
+    padding: 10px;
+    height: 100px;
 }

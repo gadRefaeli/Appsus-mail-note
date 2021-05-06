@@ -8,7 +8,9 @@ export class AddNoteTodos extends React.Component {
             info: {
                 txt: ''
             },
-            style: null
+            style: {
+                backgroundColor: '#ffffff'
+            }
         }
     }
     

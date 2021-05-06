@@ -1,3 +1,4 @@
+const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
 
 export class NotePreviewTodos extends React.Component {
@@ -14,6 +15,20 @@ export class NotePreviewTodos extends React.Component {
             gTxt[line.id] = line.isDone
         })
         this.setState({currTxt: gTxt})
+    }
+
+    setColor = (ev) => {
+        let currNote = this.state.note
+        currNote.style.backgroundColor = `${ev.target.value}`
+        this.setState({note:  currNote})
+        keepService.saveNote(currNote)
+    }
+
+    togglePinned = () => {
+        let currNote = this.state.note
+        currNote.isPinned = !currNote.isPinned
+        this.setState({note:  currNote})
+        keepService.saveNote(currNote)
     }
 
     handleInputChange = ({ target}) => {
@@ -38,15 +53,18 @@ export class NotePreviewTodos extends React.Component {
     render() {
         const { note } = this.state
         if (!note) return <div>Loading...</div> 
+        let currBgColor = (!note.style.backgroundColor)? '#ffffff' : note.style.backgroundColor
         const { currTxt } = this.state
         return (
-            <article className="note-preview" key={note.id}>
+            <article className="note-preview" key={note.id} style={{backgroundColor: currBgColor}}>
                 {note.info.txt.map(line => {
                     const lineId = line.id
                     return <p key={line.id}><input type="checkbox" id={line.id} name={line.id}  checked={currTxt[lineId]} onChange={this.handleInputChange}/>
                     <label htmlFor={line.id}>{' ' + line.str}</label></p>
                 })}
-                {/* {this.props.note.isPinned && <p>PINNED</p>} */}
+                <button className="btn-pin" onClick={() => {this.togglePinned(); loadNotes()}}>Pin</button>
+                <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
+                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
                 <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); this.props.loadNotes() }}>Delete</button>
             </article>
         )

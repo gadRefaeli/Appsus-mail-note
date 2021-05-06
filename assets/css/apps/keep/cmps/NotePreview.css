@@ -4,20 +4,41 @@
     margin-bottom: 10px;
     padding: 10px;
     position: relative;
+    display: block
 }
 
 .note-preview img {
     width: 100%;
 }
 
-.note-preview .btn-remove {
+.note-preview p {
+    margin-bottom: 8px;
+}
+
+.note-preview h4 {
+    margin-bottom: 15px;
+}
+
+.note-preview .btn-pin {
     position: absolute;
-    right: 0;
+    left: 10px;
+    bottom: 0;
+}
+
+.note-preview .btn-color {
+    position: absolute;
+    right: 100px;
     bottom: 0;
 }
 
 .note-preview .btn-update {
     position: absolute;
     right: 60px;
+    bottom: 0;
+}
+
+.note-preview .btn-remove {
+    position: absolute;
+    right: 0;
     bottom: 0;
 }

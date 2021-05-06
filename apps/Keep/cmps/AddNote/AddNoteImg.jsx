@@ -9,7 +9,9 @@ export class AddNoteImg extends React.Component {
                 url: '',
                 title: ''
             },
-            style: null
+            style: {
+                backgroundColor: '#ffffff'
+            }
         }
     }
 

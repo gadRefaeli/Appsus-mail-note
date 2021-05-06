@@ -4,7 +4,9 @@ import { utilService } from './util-service.js'
 export const keepService = {
     query,
     saveNote,
-    removeNote
+    removeNote,
+    getNoteById,
+    saveNoteTodos
 }
 
 const KEY = "notes"
@@ -12,15 +14,19 @@ var gNotes;
 
 _createNotes();
 
-function query() {
-    return Promise.resolve(gNotes);
+function getNoteById(id) {
+    const note = gNotes.find(note => {
+        return note.id === id
+    })
+    return Promise.resolve(note)
 }
-// function query(isPinned) {
-//     const filteredNotes = gNotes.filter(note => {
-//         return note.isPinned === isPinned;
-//     })
-//     return Promise.resolve(filteredNotes);
-// }
+
+function query(isPinned) {
+    const filteredNotes = gNotes.filter(note => {
+        return note.isPinned === isPinned;
+    })
+    return Promise.resolve(filteredNotes);
+}
 
 function saveNote(note) {
     return note.id ? _updateNote(note) : _addNote(note);
@@ -52,18 +58,31 @@ function _updateNote(noteToUpdate) {
     return Promise.resolve(noteToUpdate);
 }
 
-function _createNote({type, isPinned, info, style}) {
+function saveNoteTodos(noteToUpdate) {
+    const { txt } = noteToUpdate.info
+    for (let i = 0; i < txt.length; i++) {
+        txt[i] = { id: `${noteToUpdate.id}-${i}`, str: txt[i], isDone: false }
+    }
+    const noteIdx = gNotes.findIndex(note => {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate);
+}
+
+function _createNote({ type, isPinned, info, style }) {
     let note = {
         id: utilService.makeId(),
         type,
         isPinned,
         info,
         style
-    } 
+    }
     if (note.type === "NoteTodos") {
         const { txt } = note.info
         for (let i = 0; i < note.info.txt.length; i++) {
-            txt[i] = { id: `${note.id}-${i}`, str: txt[i], isDone: false}
+            txt[i] = { id: `${note.id}-${i}`, str: txt[i], isDone: false }
         }
     }
     return note
@@ -81,7 +100,7 @@ function _createNotes() {
                     txt: ['Welcome to MissKeep!']
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#f49494'
                 }
             },
             {
@@ -90,6 +109,9 @@ function _createNotes() {
                 isPinned: true,
                 info: {
                     txt: ['Enjoy our Keep!']
+                },
+                style: {
+                    backgroundColor: '#f5f77d'
                 }
             },
             {
@@ -97,11 +119,26 @@ function _createNotes() {
                 type: 'NoteVideo',
                 isPinned: true,
                 info: {
-                    url: 'https://player.vimeo.com/external/207598612.sd.mp4?s=628bc4db722909e48d507cc5f970f60dbbf6eb4b&profile_id=164',
+                    url: '../../assets/video/note.mp4',
                     title: 'Let\'s write notes!'
+                },
+                style: {
+                    backgroundColor: '#ffffff'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteImg',
+                isPinned: true,
+                info: {
+                    url: 'https://storage.hidabroot.org/articles_new/128082_tumb_750Xauto.jpg',
+                    title: 'The life are graet!'
+                },
+                style: {
+                    backgroundColor: '#ffffff'
                 }
             }
-        ]        
+        ]
     }
     gNotes = notes;
     _saveNotesToStorage();

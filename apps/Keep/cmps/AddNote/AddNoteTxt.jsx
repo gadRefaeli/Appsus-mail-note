@@ -8,7 +8,9 @@ export class AddNoteTxt extends React.Component {
             info: {
                 txt: ''
             },
-            style: null
+            style: {
+                backgroundColor: '#ffffff'
+            }
         }
     }
     
@@ -31,8 +33,7 @@ export class AddNoteTxt extends React.Component {
     onSaveNote = () => {
         const { note } = this.state
         note.info.txt = note.info.txt.split('\n')
-        let currNote = note
-        keepService.saveNote(currNote)
+        keepService.saveNote(note)
             .then(() => {
                 this.props.loadNotes()
             })        

@@ -1,9 +1,11 @@
 .note-list {
+    /* background-color: #fff; */
     width: 90vw;
+    
+    /* column-count: 3; */
     /* column-width: 300px; */
-    display: grid;
     display: grid;
     grid-template-columns: repeat(auto-fill, 300px);
     grid-auto-flow: dense;
-    gap: 10px;
+    gap: 20px;
 }
