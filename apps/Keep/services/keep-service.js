@@ -21,11 +21,22 @@ function getNoteById(id) {
     return Promise.resolve(note)
 }
 
-function query(isPinned) {
+function query(isPinned, filter) { 
     const filteredNotes = gNotes.filter(note => {
-        return note.isPinned === isPinned;
+        return note.isPinned === isPinned && (
+        (note.type === 'NoteTxt' && note.info.txt.join(',').toLowerCase().includes(filter.toLowerCase())) ||
+        (note.type === 'NoteTodos' && isNoteTodosFiltered(note.info.txt, filter)).length > 0 ||
+        ((note.type === 'NoteImg' || note.type === 'NoteVideo') && note.info.title.toLowerCase().includes(filter.toLowerCase()))
+        )
     })
     return Promise.resolve(filteredNotes);
+}
+
+function isNoteTodosFiltered(txt, filter) {
+    const filteredTodosNotes = txt.filter(line => {
+        return line.str.toLowerCase().includes(filter.toLowerCase());
+    })
+    return filteredTodosNotes;
 }
 
 function saveNote(note) {

@@ -2,19 +2,20 @@ const { Route, Switch } = ReactRouterDOM
 
 import { keepService } from './services/keep-service.js'
 
-import { NoteList } from './cmps/NoteList.jsx'
-import { AddNoteImg } from './cmps/AddNote/AddNoteImg.jsx'
-import { AddNoteTodos } from './cmps/AddNote/AddNoteTodos.jsx'
-import { AddNoteTxt } from './cmps/AddNote/AddNoteTxt.jsx'
-import { AddNoteVideo } from './cmps/AddNote/AddNoteVideo.jsx'
+import { KeepList } from './cmps/KeepList.jsx'
+import { KeepAddImg } from './cmps/KeepAdd/KeepAddImg.jsx'
+import { KeepAddTodos } from './cmps/KeepAdd/KeepAddTodos.jsx'
+import { KeepAddTxt } from './cmps/KeepAdd/KeepAddTxt.jsx'
+import { KeepAddVideo } from './cmps/KeepAdd/KeepAddVideo.jsx'
 import { KeepUpdate } from '../../pages/KeepUpdate.jsx'
-import { KeepFilter } from '../../pages/KeepFilter.jsx'
+import { KeepFilter } from './cmps/KeepFilter.jsx'
 
 export class KeepApp extends React.Component {
     state = {
         pinnedNotes: null,
         unPinnedNotes: null,
-        noteMode: 'NoteTxt'
+        noteMode: 'NoteTxt',
+        filter: ''
     }
 
     componentDidMount() {
@@ -22,17 +23,21 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        keepService.query(true)
+        keepService.query(true, this.state.filter)
             .then((pinnedNotes) => {
                 this.setState({ pinnedNotes })
             })
-        keepService.query(false)
+        keepService.query(false, this.state.filter)
             .then((unPinnedNotes) => {
                 this.setState({ unPinnedNotes })
             })
     }
 
-    setNoteMode = (type) => {
+    onSetFilter = (value) => {
+        this.setState({ filter : value}, this.loadNotes)
+    }
+
+    onSetNoteMode = (type) => {
         this.setState({ noteMode: type })
     }
 
@@ -43,25 +48,25 @@ export class KeepApp extends React.Component {
     render() {
         const { pinnedNotes, unPinnedNotes, noteMode } = this.state
 
-        if (!pinnedNotes || !unPinnedNotes || pinnedNotes.length === 0 && unPinnedNotes.length === 0) return <div>Loading...</div>
+        if (!pinnedNotes || !unPinnedNotes ) return <div>Loading...</div>
 
         return (
             <main className="keep-app">
-                <h2>MissKeep</h2>
+            
                 <Switch>
-                    {noteMode === 'NoteTxt' && <AddNoteTxt loadNotes={this.loadNotes} setNoteMode={this.setNoteMode} />}
-                    {noteMode === 'NoteImg' && <AddNoteImg loadNotes={this.loadNotes} setNoteMode={this.setNoteMode} />}
-                    {noteMode === 'NoteTodos' && <AddNoteTodos loadNotes={this.loadNotes} setNoteMode={this.setNoteMode} />}
-                    {noteMode === 'NoteVideo' && <AddNoteVideo loadNotes={this.loadNotes} setNoteMode={this.setNoteMode} />}
+                    {noteMode === 'NoteTxt' && <KeepAddTxt loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
+                    {noteMode === 'NoteImg' && <KeepAddImg loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
+                    {noteMode === 'NoteTodos' && <KeepAddTodos loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
+                    {noteMode === 'NoteVideo' && <KeepAddVideo loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                 </Switch>
 
-                {/* <KeepFilter/> */}
+                <KeepFilter onSetFilter={this.onSetFilter}/>
 
                 <section>
                     {pinnedNotes.length > 0 && <h5>Pinned Notes</h5>}
-                    <NoteList notes={pinnedNotes} loadNotes={this.loadNotes} />
+                    <KeepList notes={pinnedNotes} loadNotes={this.loadNotes} />
                     {pinnedNotes.length > 0 && <h5>Other Notes</h5>}
-                    <NoteList notes={unPinnedNotes} loadNotes={this.loadNotes} />
+                    <KeepList notes={unPinnedNotes} loadNotes={this.loadNotes} />
                 </section>
 
                 <Route component={KeepUpdate} path="/KeepApp/:KeepId" />

@@ -1,9 +1,9 @@
-@import "./cmps/AddNote.css";
-@import "./cmps/NoteList.css";
-@import "./cmps/NotePreview.css";
+@import "./cmps/KeepAdd.css";
+@import "./cmps/KeepList.css";
+@import "./cmps/KeepPreview.css";
 
 body {
-    background-color: lightblue;
+    background-color: #f5f6f8;
 }
 
 .keep-app {

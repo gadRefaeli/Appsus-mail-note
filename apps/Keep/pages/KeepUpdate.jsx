@@ -1,9 +1,9 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
-import { UpdateNoteTxt } from '../cmps/UpdateNote/UpdateNoteTxt.jsx'
-import { UpdateNoteImg } from '../cmps/UpdateNote/UpdateNoteImg.jsx'
-import { UpdateNoteVideo } from '../cmps/UpdateNote/UpdateNoteVideo.jsx'
-import { UpdateNoteTodos } from '../cmps/UpdateNote/UpdateNoteTodos.jsx'
+import { KeepUpdateTxt } from '../cmps/KeepUpdate/KeepUpdateTxt.jsx'
+import { KeepUpdateImg } from '../cmps/KeepUpdate/KeepUpdateImg.jsx'
+import { KeepUpdateVideo } from '../cmps/KeepUpdate/KeepUpdateVideo.jsx'
+import { KeepUpdateTodos } from '../cmps/KeepUpdate/KeepUpdateTodos.jsx'
 
 export class KeepUpdate extends React.Component {
     state = {
@@ -24,13 +24,13 @@ export class KeepUpdate extends React.Component {
         const DynamicCmp = (props) => {
             switch (note.type) {
                 case 'NoteTxt':
-                    return <UpdateNoteTxt {...props} />
+                    return <KeepUpdateTxt {...props} />
                 case 'NoteImg':
-                    return <UpdateNoteImg {...props} />
+                    return <KeepUpdateImg {...props} />
                 case 'NoteVideo':
-                    return <UpdateNoteVideo {...props} />
+                    return <KeepUpdateVideo {...props} />
                 case 'NoteTodos':
-                    return <UpdateNoteTodos {...props} />
+                    return <KeepUpdateTodos {...props} />
             }
         }
 

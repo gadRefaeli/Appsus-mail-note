@@ -1,7 +1,7 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
 
-export class NotePreviewTodos extends React.Component {
+export class KeepPreviewTodos extends React.Component {
     state = {
         note: null,
         currTxt: {}
@@ -51,6 +51,7 @@ export class NotePreviewTodos extends React.Component {
       }
     
     render() {
+        const { loadNotes } = this.props
         const { note } = this.state
         if (!note) return <div>Loading...</div> 
         let currBgColor = (!note.style.backgroundColor)? '#ffffff' : note.style.backgroundColor
@@ -62,7 +63,7 @@ export class NotePreviewTodos extends React.Component {
                     return <p key={line.id}><input type="checkbox" id={line.id} name={line.id}  checked={currTxt[lineId]} onChange={this.handleInputChange}/>
                     <label htmlFor={line.id}>{' ' + line.str}</label></p>
                 })}
-                <button className="btn-pin" onClick={() => {this.togglePinned(); loadNotes()}}>Pin</button>
+                <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
                 <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
                 <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); this.props.loadNotes() }}>Delete</button>

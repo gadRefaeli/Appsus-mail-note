@@ -1,7 +1,7 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
 
-export class NotePreviewVideo extends React.Component {
+export class KeepPreviewVideo extends React.Component {
     state = {
         note: null
     }
@@ -37,7 +37,7 @@ export class NotePreviewVideo extends React.Component {
                     </iframe>
                 </div>
                 <h4>{note.info.title}</h4>
-                <button className="btn-pin" onClick={() => {this.togglePinned(); loadNotes()}}>Pin</button>
+                <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
                 <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
                 <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}>Delete</button>

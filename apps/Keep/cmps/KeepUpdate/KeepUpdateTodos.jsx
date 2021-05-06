@@ -1,7 +1,7 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
 
-export class UpdateNoteTodos extends React.Component {
+export class KeepUpdateTodos extends React.Component {
     state = {
         note: null
     }

@@ -1,0 +1,72 @@
+.add-note-container {
+    background-color: #fff;
+    width: 600px;
+    margin: 30px;
+    border-radius: 8px;
+    box-shadow: 1px 0px 8px 2px rgb(190, 190, 191, .73);
+}
+
+.add-note-controller {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-note-controller > * {
+    margin: 10px;
+}
+
+.input-add-note {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+    margin: 5px;
+}
+
+.textarea-add-note {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+    resize: none;
+    width: 200px;
+    overflow: hidden;
+    min-height: 40px;
+    line-height: 20px;
+}
+
+.nav-add-note {
+    width: 220px
+}
+
+.nav-add-note > *{
+    margin-right: 10px;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+}
+
+.nav-add-note .btn-txt {
+    background-image: url(../../../../../apps/Keep/assets/icon/txt.png);
+}
+
+.nav-add-note .btn-img {
+    background-image: url(../../../../../apps/Keep/assets/icon/img.png);
+}
+
+.nav-add-note .btn-video {
+    background-image: url(../../../../../apps/Keep/assets/icon/video.png);
+}
+
+.nav-add-note .btn-list {
+    background-image: url(../../../../../apps/Keep/assets/icon/list.png);
+}
+
+.nav-add-note .btn-active {
+    background-color: rgb(180, 178, 178);
+    color: white;
+}

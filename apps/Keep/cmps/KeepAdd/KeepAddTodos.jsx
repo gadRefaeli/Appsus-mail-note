@@ -1,6 +1,6 @@
 import { keepService } from '../services/keep-service.js'
 
-export class AddNoteTodos extends React.Component {
+export class KeepAddTodos extends React.Component {
     state = {
         note: {
             type: 'NoteTodos',
@@ -13,7 +13,7 @@ export class AddNoteTodos extends React.Component {
             }
         }
     }
-    
+
     inputRef = React.createRef()
 
     componentDidMount() {
@@ -39,7 +39,7 @@ export class AddNoteTodos extends React.Component {
         keepService.saveNote(currNote)
             .then(() => {
                 this.props.loadNotes()
-            })        
+            })
     }
 
     render() {
@@ -47,13 +47,13 @@ export class AddNoteTodos extends React.Component {
         return (
             <section className="add-note-container">
                 <div className="add-note-controller">
-                <textarea className="textarea-add-note" ref={this.inputRef} name="txt" value={txt} placeholder="Enter lines..." onChange={this.handleChange} />
-                <nav className="nav-add-note">
-                    <button onClick={() => {this.props.setNoteMode('NoteTxt')}}>A</button>
-                    <button onClick={() => {this.props.setNoteMode('NoteImg')}}>Img</button>
-                    <button onClick={() => {this.props.setNoteMode('NoteVideo')}}>video</button>
-                    <button className="btn-active" onClick={() => {this.props.setNoteMode('NoteTodos')}}>todo</button>
-                </nav>
+                    <textarea className="textarea-add-note" ref={this.inputRef} name="txt" value={txt} placeholder="Enter lines..." onChange={this.handleChange} />
+                    <nav className="nav-add-note">
+                        <button className="btn-txt" onClick={() => { this.props.setNoteMode('NoteTxt') }}></button>
+                        <button className="btn-img" onClick={() => { this.props.setNoteMode('NoteImg') }}></button>
+                        <button className="btn-video" onClick={() => { this.props.setNoteMode('NoteVideo') }}></button>
+                        <button className="btn-list btn-active" onClick={() => { this.props.setNoteMode('NoteTodos') }}></button>
+                    </nav>
                 </div>
                 <button onClick={this.onSaveNote}>Save note</button>
             </section>

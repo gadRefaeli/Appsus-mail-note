@@ -1,0 +1,65 @@
+.note-preview {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+    display: block;
+    border-radius: 8px;
+    box-shadow:  1px 0px 5px rgb(190, 190, 191, .73);
+}
+
+.note-preview img {
+    width: 100%;
+}
+
+.note-preview p {
+    margin-bottom: 8px;
+}
+
+.note-preview p:last-of-type {
+    margin-bottom: 25px;
+}
+
+.note-preview h4 {
+    margin-bottom: 25px;
+}
+
+.note-preview .btn-pin {
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-off.png);
+    background-size: 30px;
+    cursor: pointer;
+}
+
+.note-preview .btn-pin:hover {
+    background-color: rgb(233, 233, 233);
+    border-radius: 5px;
+}
+
+.note-preview .btn-pin.true {
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-on.png);
+}
+
+.note-preview .btn-color {
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+}
+
+.note-preview .btn-update {
+    position: absolute;
+    right: 60px;
+    bottom: 0;
+}
+
+.note-preview .btn-remove {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
