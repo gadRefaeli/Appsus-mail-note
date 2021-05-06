@@ -40,6 +40,13 @@ export class KeepAddTodos extends React.Component {
             .then(() => {
                 this.props.loadNotes()
             })
+        this.setState(prevState => ({
+            note: {
+                ...prevState.note,
+                info: { txt: '' }
+            }
+        }))
+        this.inputRef.current.focus()
     }
 
     render() {

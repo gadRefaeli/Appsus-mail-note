@@ -17,6 +17,16 @@ export class KeepAddTxt extends React.Component {
     inputRef = React.createRef()
 
     componentDidMount() {
+        const searchParams = new URLSearchParams(this.props.location.search);
+        const subject = searchParams.get('subject')
+        const from = searchParams.get('from')
+        const body = searchParams.get('body')
+        const to = searchParams.get('to')
+        const txt = `from: ${from}\nto: ${to}\nsubject: ${subject}\nbody: ${body}`
+        if (body) {
+            const note = { type: 'NoteTxt', isPinned: false, info: { txt: txt }, style: { backgroundColor: '#ffffff' } }
+            this.setState({ note })
+        }
         this.inputRef.current.focus()
     }
 
@@ -37,6 +47,13 @@ export class KeepAddTxt extends React.Component {
             .then(() => {
                 this.props.loadNotes()
             })
+        this.setState(prevState => ({
+            note: {
+                ...prevState.note,
+                info: { txt: '' }
+            }
+        }))
+        this.inputRef.current.focus()
     }
 
     render() {

@@ -34,7 +34,7 @@ export class KeepApp extends React.Component {
     }
 
     onSetFilter = (value) => {
-        this.setState({ filter : value}, this.loadNotes)
+        this.setState({ filter: value }, this.loadNotes)
     }
 
     onSetNoteMode = (type) => {
@@ -48,11 +48,11 @@ export class KeepApp extends React.Component {
     render() {
         const { pinnedNotes, unPinnedNotes, noteMode } = this.state
 
-        if (!pinnedNotes || !unPinnedNotes ) return <div>Loading...</div>
+        if (!pinnedNotes || !unPinnedNotes) return <div>Loading...</div>
 
         return (
             <main className="keep-app">
-            
+
                 <Switch>
                     {noteMode === 'NoteTxt' && <KeepAddTxt loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                     {noteMode === 'NoteImg' && <KeepAddImg loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
@@ -60,7 +60,7 @@ export class KeepApp extends React.Component {
                     {noteMode === 'NoteVideo' && <KeepAddVideo loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                 </Switch>
 
-                <KeepFilter onSetFilter={this.onSetFilter}/>
+                <KeepFilter onSetFilter={this.onSetFilter} />
 
                 <section>
                     {pinnedNotes.length > 0 && <h5>Pinned Notes</h5>}

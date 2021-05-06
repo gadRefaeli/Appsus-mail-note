@@ -11,6 +11,16 @@ export class MailAdd extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const searchParams = new URLSearchParams(this.props.location.search);
+    const subject = searchParams.get('subject')
+    const to = searchParams.get('to')
+    const body = searchParams.get('body')
+    if (body) {
+      const mail = {subject, to, body, from: 'Me@gmail.com'}
+      this.setState({mail})
+    }
+  }
 
   handleChange = ({ target }) => {
     const field = target.name

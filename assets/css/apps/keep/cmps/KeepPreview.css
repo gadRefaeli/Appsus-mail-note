@@ -46,6 +46,12 @@
     background-image: url(../../../../../apps/Keep/assets/icon/pin-on.png);
 }
 
+.note-preview .btn-mail {
+    position: absolute;
+    right: 160px;
+    bottom: 0;
+}
+
 .note-preview .btn-color {
     position: absolute;
     right: 100px;

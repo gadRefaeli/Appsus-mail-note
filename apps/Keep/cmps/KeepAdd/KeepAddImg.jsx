@@ -29,14 +29,14 @@ export class KeepAddImg extends React.Component {
                     ...prevState.note,
                     info: { url: value, title: prevState.note.info.title }
                 }
-            })) 
+            }))
         } else if (target.name === 'title') {
             this.setState(prevState => ({
                 note: {
                     ...prevState.note,
                     info: { title: value, url: prevState.note.info.url }
                 }
-            })) 
+            }))
         }
     }
 
@@ -47,6 +47,13 @@ export class KeepAddImg extends React.Component {
             .then(() => {
                 this.props.loadNotes()
             })
+        this.setState(prevState => ({
+            note: {
+                ...prevState.note,
+                info: { title: '', url: '' }
+            }
+        }))
+        this.inputRef.current.focus()
     }
 
     render() {

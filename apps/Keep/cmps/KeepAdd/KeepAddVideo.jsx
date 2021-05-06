@@ -47,6 +47,13 @@ export class KeepAddVideo extends React.Component {
             .then(() => {
                 this.props.loadNotes()
             })
+        this.setState(prevState => ({
+            note: {
+                ...prevState.note,
+                info: { title: '', url: '' }
+            }
+        }))
+        this.inputRef.current.focus()
     }
 
     render() {
