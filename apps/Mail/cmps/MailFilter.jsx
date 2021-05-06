@@ -52,15 +52,12 @@ export class MailFilter extends React.Component {
     return (
 
       <form className="mail-filter" onSubmit={this.onFilter}>
+        
         <button name="read" value="null" onClick={this.handleChange} >All Mails </button>
         <button name="read" value={true} onClick={this.handleChange} >Read Mails</button>
         <button name="read" value={false} onClick={this.handleChange} >Unread Mails</button>
         <button name="star" value={true} onClick={this.handleChange} >Stared Mails</button>
-        <div>
-          <label htmlFor="bySearch">Search</label>
-          <input type="text" id="bySearch"  name="search" value={search} onChange={this.handleChange} />
-        </div>
-       
+    
       </form>
     )
   }

@@ -52,6 +52,7 @@ export class MailDetails extends React.Component {
         <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >save as note</button> 
         {/* <MailToNote mail={mail} /> */}
         <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >reply</button> 
+     
       </div >
 
     )

@@ -2,7 +2,11 @@ const { Link } = ReactRouterDOM
 import { MailService } from '../services/mail-service.js'
 import { MailList } from '../cmps/MailList.jsx'
 import { MailFilter } from '../cmps/MailFilter.jsx'
+import { MailSearch } from '../cmps/MailSearch.jsx'
+
 import { eventBusService } from '../services/event-bus-service.js'
+
+
 export class MailApp extends React.Component {
 
    
@@ -81,27 +85,39 @@ export class MailApp extends React.Component {
         // const readPrec=`${100*this.state.unreadMailCount/(this.state.unreadMailCount+this.state.readMailCount)}%`;
         const { mails } = this.state
         if (!mails) return <div>Loading...</div>
-
+        var unreadPercentage=100*(this.state.unreadMailCount/(this.state.unreadMailCount+this.state.readMailCount));
+        console.log(unreadPercentage)
+        const divStyle={ width: `${unreadPercentage}%`}
         return (
             <section className="Mail-list-section">
-                 
-                <div className="mail-side-bar">
-                    <button><Link to="/MailApp/compose">compose</Link> </button>
+                 <div className="mail-side-bar">
+                <h1>Mailbox</h1>  
+                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../apps/Mail/assets/img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
                     <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
-                    <p> Unread mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
-                    
+                    <p> Unread Mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
+                    <div className="bar-unread"> <div className="bar-unread-inner" style={divStyle}></div></div>
                 </div>
                <div>
 
                </div>
+               <div className="mail-main-bar">
+               
                 <div className="sorting">
-                    <p> Sort by:</p>
+                <MailSearch onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
                     <button className="sort-by-title" name="subject" onClick={()=>{this.setState({ sortBy: 'subject' },this.sort('subject'))}}> Title </button>
                     <button className="sort-by-date" name="date" onClick={()=>{this.setState({ sortBy: 'date' },this.sort('date'))}}> Date </button>
+                    </div>
                     <MailList mails={mails} removePreviewedMail={this.removePreviewedMail} taggleIsReading={this.taggleIsReading} taggleIsStared={this.taggleIsStared}  />
 
-                </div>
+
+
+                   
+
+                    </div>
                
+
+
+
             </section>
         )
     }
