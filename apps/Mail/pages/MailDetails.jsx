@@ -24,9 +24,9 @@ export class MailDetails extends React.Component {
       this.setState({ mail })
       MailService.updateIfReading(id)
     })
-   
+
   }
-  
+
   onDeleteMail = () => {
     MailService.removeMail(this.state.mail.id)
       .then(() => {
@@ -36,23 +36,35 @@ export class MailDetails extends React.Component {
 
   render() {
     const { mail } = this.state
-   
+
     if (!mail) return <div>Loading...</div>
-    var time=new Date(mail.sentAt).toLocaleString();
+    var time = new Date(mail.sentAt).toLocaleString();
     return (
-     
-     <div className="container mail-details" >
-      
-         <p className="mail-details-subject">{mail.subject}</p>
-         <p className="mail-details-mail"> <span>{mail.from.split('@')[0]} </span>{mail.from}</p>
-         <p className="mail-details-body">{mail.body}</p>
-         <p>{time}</p>
-         <button onClick={this.onDeleteMail} > x</button>
-        <button onClick={() => this.props.history.push('/MailApp')} > Go back</button>
-        <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >save as note</button> 
-        {/* <MailToNote mail={mail} /> */}
-        <button  onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} >reply</button> 
-     
+
+      <div className="mail-details" >
+         <div className="mail-main-bar">
+           <div className="mail-main-bar-inner">
+           <p className="mail-details-time">{time}</p>
+          <p className="mail-details-mail"> <span>{mail.from.split('@')[0]} </span>{`<${mail.from}>`}</p>
+          <p className="mail-details-subject">{mail.subject}</p>
+          <p className="mail-details-body"><hr/>{mail.body}</p>
+          
+           </div>
+         
+        </div>
+        <div className=" mail-details-btn mail-side-bar">
+          <h1>Mailbox</h1>
+          <button onClick={() => this.props.history.push('/MailApp')}  > <img src="/assets/img/back.png" width="20"></img>Go back</button>
+          <button onClick={this.onDeleteMail} > <img src="/assets/img/trash-white.png" width="20"></img>Delete</button>
+          
+         {/* <MailToNote mail={mail} /> */}
+          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/replay-01.png" width="20"></img>Reply</button>
+          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/notes-01.png" width="30"></img>Save as note</button>
+          
+        </div>
+       
+
+
       </div >
 
     )

@@ -5,11 +5,14 @@
 }
 
 .nav-bar, .footer{
-background-color: rgb(0, 0, 0);
+background-color: rgb(44, 42, 42);
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
 padding: 20px;
+padding-top: 30px;
+padding-bottom: 30px;
+font-size: 18px;
 }
 .nav-bar a{
   margin-left: 20px;
@@ -31,4 +34,8 @@ ul {
 }
 .footer small{
   color: white;
+}
+
+body{
+  font-family: b;
 }
