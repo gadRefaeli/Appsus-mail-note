@@ -26,7 +26,7 @@ export class MailDetails extends React.Component {
     })
 
   }
-
+  
   onDeleteMail = () => {
     MailService.removeMail(this.state.mail.id)
       .then(() => {
