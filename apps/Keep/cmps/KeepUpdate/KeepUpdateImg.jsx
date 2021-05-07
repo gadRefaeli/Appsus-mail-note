@@ -49,10 +49,9 @@ export class KeepUpdateImg extends React.Component {
             <article className="update-note">
                 <input className="input-add-note" type="text" ref={this.inputRef} name="url" value={url} placeholder="Enter image URL..." onChange={this.handleChange} />
                 <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
-            <div class="edit-btns">
-                {note.isPinned && <span>PINNED</span>}
-                
-                <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
+                <div class="edit-btns">
+
+                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
             </article>
         )

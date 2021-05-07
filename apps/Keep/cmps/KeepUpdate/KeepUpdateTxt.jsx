@@ -45,7 +45,6 @@ export class KeepUpdateTxt extends React.Component {
                 <textarea className="textarea-edit-note" ref={this.inputRef} name="txt"
                     value={txt} placeholder="Enter text..." onChange={this.handleChange}></textarea>
                 <div className="edit-btns">
-                    {note.isPinned && <span>PINNED</span>}
                     
                     <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
