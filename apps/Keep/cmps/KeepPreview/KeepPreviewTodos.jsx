@@ -1,19 +1,25 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
+import { LongTodos } from '../LongTodos.jsx'
 
 export class KeepPreviewTodos extends React.Component {
     state = {
         note: null,
-        currTxt: {}
+        currTxt: {},
+        isReadMore: false
     }
     gNote = this.props.note
 
     componentDidMount() {
         this.setState({ note: this.props.note })
         var gTxt = {}
-        this.props.note.info.txt.forEach(line => {
-            gTxt[line.id] = line.isDone
-        })
+        if (this.props.note.info.txt) {
+            console.log(this.props.note.info.txt)
+            this.props.note.info.txt.forEach(line => {
+                gTxt[line.id] = line.isDone
+            })
+        }
+        
         this.setState({ currTxt: gTxt })
     }
 
@@ -50,6 +56,10 @@ export class KeepPreviewTodos extends React.Component {
         keepService.saveNote(this.state.note)
     }
 
+    toggleRead = () => {
+        this.setState({ isReadMore: !this.state.isReadMore })
+    }
+
     setQryStr = () => {
         const { note } = this.state
         const str = note.info.txt.map(line => {
@@ -68,10 +78,9 @@ export class KeepPreviewTodos extends React.Component {
         const qryStr = this.setQryStr()
         const { currTxt } = this.state
         return (
-            <article className="note-preview" key={note.id} style={{ backgroundColor: currBgColor }}>
+            <article className="note-preview" key={note.id} style={{ backgroundColor: currBgColor }}>   
                 {note.info.txt.map(line => {
-                    const lineId = line.id
-                    return <p key={line.id}><input type="checkbox" id={line.id} name={line.id} checked={currTxt[lineId]} onChange={this.handleInputChange} />
+                    return <p key={line.id}><input type="checkbox" id={line.id} name={line.id} checked={currTxt[line.id]} onChange={this.handleInputChange} />
                         <label htmlFor={line.id}>{' ' + line.str}</label></p>
                 })}
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => { this.togglePinned(); loadNotes() }}></button>
@@ -83,3 +92,11 @@ export class KeepPreviewTodos extends React.Component {
         )
     }
 }
+
+// {note.info.txt.map(line => {
+//     return <p key={line.id}><input type="checkbox" id={line.id} name={line.id} checked={currTxt[line.id]} onChange={this.handleInputChange} />
+//         <label htmlFor={line.id}>{' ' + line.str}</label></p>
+// })}
+
+{/* <LongTodos txt={note.info.txt} isReadMore={this.state.isReadMore} toggleRead={this.toggleRead}
+                 currTxt={currTxt} handleInputChange={this.handleInputChange} /> */}

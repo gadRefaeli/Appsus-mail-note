@@ -51,8 +51,7 @@ export class KeepUpdateTodos extends React.Component {
                 value={txt} placeholder="Enter text..." onChange={this.handleChange}></textarea>
             <div class="edit-btns">
                 {note.isPinned && <span>PINNED</span>}
-                <NavLink className="btn-remove" onClick={() => { keepService.removeNote(note.id) }} to={`/KeepApp/`}>Delete</NavLink>
-                
+                                
                 <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
             </article>

@@ -45,7 +45,7 @@ export class KeepPreviewImg extends React.Component {
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
                 <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
-                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
+                <NavLink className="btn-update" loadNotes={loadNotes}  to={`/KeepApp/${note.id}/`}>Edit</NavLink>
                 <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}>Delete</button>
             </article>
         )

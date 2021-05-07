@@ -51,8 +51,7 @@ export class KeepUpdateImg extends React.Component {
                 <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
             <div class="edit-btns">
                 {note.isPinned && <span>PINNED</span>}
-                <NavLink className="btn-remove" onClick={() => { keepService.removeNote(note.id) }} to={`/KeepApp/`}>Delete</NavLink>
-
+                
                 <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
             </article>

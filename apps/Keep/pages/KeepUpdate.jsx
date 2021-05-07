@@ -38,7 +38,7 @@ export class KeepUpdate extends React.Component {
             <div className="cover-screen" onClick={() => {<NavLink to={`/KeepApp/`}/>}}>   
             <section className="update-modal">
                 <h1>Edit</h1>
-                <DynamicCmp note={this.state.note} />
+                <DynamicCmp note={this.state.note} loadNotes={this.props.loadNotes}/>
                 
             </section>
             </div>

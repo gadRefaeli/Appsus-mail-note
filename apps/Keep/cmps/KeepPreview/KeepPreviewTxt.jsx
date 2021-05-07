@@ -33,7 +33,8 @@ export class KeepPreviewTxt extends React.Component {
 
     setQryStr = () => {
         const { note } = this.state
-        const str = note.info.txt.join(',')
+        let str = ''
+        if (note.info.txt) str = note.info.txt.join(',')
         const idx = str.indexOf(' ')
         const subject = str.slice(0, idx)
         const qryStr = `/MailApp/compose/?subject=${subject}&to=example@gmail.com&body=${str}`  

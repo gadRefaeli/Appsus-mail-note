@@ -1,20 +1,18 @@
 export function LongTxt({ txt, isReadMore, toggleRead }) {
 
-    let currTxt = txt
-
+    let gTxt = txt
+    
     if (txt.length > 4) {
-        currTxt = (isReadMore) ? txt : txt.slice(1, 5)
-        if (isReadMore) txt[3] += '...'
+        gTxt = (isReadMore) ? txt : txt.slice(0, 4)
     }
     
-    currTxt = currTxt.map(line => {
-        console.log(line)
-        return <p>{line}</p>
+    gTxt = gTxt.map((line, idx) => {
+        return <p key={idx}>{line}{(!isReadMore && txt.length > 4 && idx === 3)? '...' : ''}</p>
     })
 
     return (
         <span>
-            <span>{currTxt}</span><br />
+            <span>{gTxt}</span><br />
             {txt.length > 4 && <button onClick={toggleRead}>{(isReadMore) ? 'Read less' : 'Read More'}</button>}
         </span >
     )

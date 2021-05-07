@@ -35,6 +35,7 @@ export class KeepUpdateTxt extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         if (!this.state.note) return <div>Downloading...</div>
         let { note } = this.state
         let { txt } = note.info
@@ -43,9 +44,9 @@ export class KeepUpdateTxt extends React.Component {
 
                 <textarea className="textarea-edit-note" ref={this.inputRef} name="txt"
                     value={txt} placeholder="Enter text..." onChange={this.handleChange}></textarea>
-                <div class="edit-btns">
+                <div className="edit-btns">
                     {note.isPinned && <span>PINNED</span>}
-                    <NavLink className="btn-remove" onClick={() => { keepService.removeNote(note.id) }} to={`/KeepApp/`}>Delete</NavLink>
+                    
                     <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
             </article>
