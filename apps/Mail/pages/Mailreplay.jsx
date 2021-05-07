@@ -56,7 +56,7 @@ export class Mailreplay extends React.Component {
   render() {
     const { subject, to, body, from } = this.state.mail
     return (
-      <div className="Mail-list-section">
+      <div className="Mail-details-section">
 
       <form className="mail-add mail-details" onSubmit={this.onSaveMail}>
         <div className="mail-main-bar">
@@ -73,7 +73,7 @@ export class Mailreplay extends React.Component {
             </label>
           </div>
         </div>
-        <div className="mail-side-bar  mail-details-btn">
+        <div className=" mail-details-btn">
           <h1>Mailbox</h1>
           <button type="submit"><img src="/assets/img/send-01.png" width="30"></img>Send</button>
           <button onClick={() => this.props.history.push('/MailApp')}> <img src="/assets/img/back.png" width="20"></img>Go back</button>

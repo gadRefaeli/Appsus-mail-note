@@ -22,6 +22,7 @@ export class MailApp extends React.Component {
         allMailCount: null,
         readMailCount: null,
         unreadMailCount: null,
+        sideBar:false
     }
 
     getMailCount=()=>{
@@ -81,7 +82,12 @@ export class MailApp extends React.Component {
       taggleIsStared = (id) =>{
         MailService.taggleStar(id)
       }
+      taggleSideBar=()=>{
+        this.setState({sideBar: !this.state.sideBar})
+        
+      }
       render() {
+     var sideBarClass=(this.state.sideBar)? 'mail-side-bar-open':'mail-side-bar-close';
         // const readPrec=`${100*this.state.unreadMailCount/(this.state.unreadMailCount+this.state.readMailCount)}%`;
         const { mails } = this.state
         if (!mails) return <div>Loading...</div>
@@ -90,15 +96,31 @@ export class MailApp extends React.Component {
         const divStyle={ width: `${unreadPercentage}%`}
         return (
             <section className="Mail-list-section">
-                 <div className="mail-side-bar">
-                <h1>Mailbox</h1>  
+                   <div className="mail-side-bar">
+                <h1>Mailbox</h1> 
+                
+                <div>
                 <Link to="/MailApp/compose"><button className="compose-btn"><img src="../apps/Mail/assets/img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
                     <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
                     <p> Unread Mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
                     <div className="bar-unread"> <div className="bar-unread-inner" style={divStyle}></div></div>
-                </div>
+                    </div> 
+                    </div>
+               <div></div>
+                 <div className="mail-side-bar-nav">
+                <h1>Mailbox <span className={sideBarClass} onClick={this.taggleSideBar}><img src="../apps/Mail/assets/img/compose-02.png" width="30"></img> </span></h1> 
+                
+                {(this.state.sideBar)&&
+                <div className="side-bar-phone">
+                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../apps/Mail/assets/img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
+                    <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
+                    <p> Unread Mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
+                    <div className="bar-unread"> <div className="bar-unread-inner" style={divStyle}></div></div>
+                    </div> 
+                }
+                    </div>
                <div>
-
+             
                </div>
                <div className="mail-main-bar">
                
