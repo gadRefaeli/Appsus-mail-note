@@ -61,7 +61,7 @@ export class KeepAddVideo extends React.Component {
         return (
             <section className="add-note-container">
                 <div className="add-note-controller">
-                <nav className="nav-add-note">
+                    <nav className="nav-add-note">
                         <button className="btn-txt" onClick={() => { this.props.setNoteMode('NoteTxt') }}></button>
                         <button className="btn-img" onClick={() => { this.props.setNoteMode('NoteImg') }}></button>
                         <button className="btn-video btn-active" onClick={() => { this.props.setNoteMode('NoteVideo') }}></button>
@@ -69,13 +69,13 @@ export class KeepAddVideo extends React.Component {
                     </nav>
                     <div>
                         <input className="input-add-note" type="text" ref={this.inputRef} name="url" value={url} placeholder="Enter video URL..." onChange={this.handleChange} />
-                        <br/>
+                        <br />
                         <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
                     </div>
-                   
+
                     <button className="keep-save" onClick={this.onSaveNote}>Save note</button>
                 </div>
-                
+
             </section>
         )
     }

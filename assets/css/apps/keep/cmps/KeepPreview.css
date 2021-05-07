@@ -32,48 +32,111 @@
     margin-bottom: 25px;
 } */
 
-.note-preview .btn-pin {
-     position: absolute;
+.note-preview .btn-pin { 
+      position: absolute;
     left: 10px;
     bottom: 0; 
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: none;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../../../../apps/Keep/assets/icon/pin-off.png);
-    background-size: 30px;
-    cursor: pointer;
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-of.png);
+   
+    cursor: pointer; 
 }
-
+.true{
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-of.png);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-update{
+    background-image: url(../../../../../apps/Keep/assets/icon/edit.png);
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn-remove{
+    background-image: url(../../../../../apps/Keep/assets/icon/trash.png);
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+}
+.btn-mail{
+    background-image: url(../../../../../apps/Keep/assets/icon/mail.png);
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+}
+.btn-color{
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    border-radius: 50%;
+    
+    background-image: linear-gradient(to bottom, #ff0000, #e8fa41,#39f759, #3147e9);
+    border: none;
+}
 .note-preview .btn-pin:hover {
     background-color: rgb(233, 233, 233);
     border-radius: 5px;
 }
 
 .note-preview .btn-pin.true {
-    background-image: url(../../../../../apps/Keep/assets/icon/pin-on.png);
+    position: absolute;
+    left: 10px;
+    bottom: 10px; 
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-01.png);
+    background-size: 30px;
+    cursor: pointer; 
+    
+}
+.note-preview .btn-pin.false {
+    position: absolute;
+    left: 10px;
+    bottom: 10px; 
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../../../../apps/Keep/assets/icon/pin-off.png);
+    background-size: 30px;
+    cursor: pointer; 
+    
 }
 
 .note-preview .btn-mail {
     position: absolute;
-    right: 160px;
+    right: 70px;
     bottom: 15px;
 } 
 
 .note-preview .btn-color {
     position: absolute;
-    right: 100px;
+    right: 105px;
     bottom:  15px;
 }
 
 .note-preview .btn-update {
     position: absolute;
-    right: 60px;
+    right: 35px;
     bottom:  15px;
 } 
 
 .note-preview .btn-remove {
     position: absolute;
-    right:  15px;
+    right:  5px;
     bottom:  15px;
 }

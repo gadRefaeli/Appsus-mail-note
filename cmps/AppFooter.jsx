@@ -2,7 +2,7 @@ export function AppFooter() {
   const { Link } = ReactRouterDOM;
 return (
   <footer className="footer">
-    <small>coffe</small>
+    <h1 >AppSus ©</h1>
   </footer>
 )
 }

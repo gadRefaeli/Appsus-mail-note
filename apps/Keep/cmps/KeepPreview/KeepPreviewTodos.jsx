@@ -84,10 +84,10 @@ export class KeepPreviewTodos extends React.Component {
                         <label htmlFor={line.id}>{' ' + line.str}</label></p>
                 })}
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => { this.togglePinned(); loadNotes() }}></button>
-                <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
+                <NavLink className="btn-mail" to={qryStr}></NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
-                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
-                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); this.props.loadNotes() }}>Delete</button>
+                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}></NavLink>
+                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); this.props.loadNotes() }}></button>
             </article>
         )
     }

@@ -51,10 +51,10 @@ export class KeepPreviewTxt extends React.Component {
             <article className="note-preview" key={note.id} style={{backgroundColor: currBgColor}}>
                 <LongTxt txt={note.info.txt} isReadMore={this.state.isReadMore} toggleRead={this.toggleRead} />
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
-                <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
+                <NavLink className="btn-mail" to={qryStr}></NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
-                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
-                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}>Delete</button>
+                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}></NavLink>
+                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}></button>
             </article>
         )
     }

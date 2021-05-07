@@ -1,6 +1,6 @@
 .add-note-container {
     background-color: #E1CBDC;
-    width: 33vw;
+    width: 500px;
     margin: 30px;
     border-radius: 10px;
     box-shadow: 1px 0px 8px 2px rgb(190, 190, 191, .73);
@@ -9,14 +9,9 @@
 
 .add-note-controller {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    
-}
-
-.add-note-controller > * {
-    margin: 10px;
 }
 
 .input-add-note {
@@ -27,7 +22,7 @@
     margin: 5px;
     height: 40px;
     padding: 5px;
-    padding-left:15px ;
+    padding-left: 15px;
     border-radius: 35px;
     border: none;
     margin: 5px;
@@ -37,12 +32,12 @@
 }
 
 .textarea-add-note {
-    background-color:white ;
+    background-color: white;
     font-family: inherit;
     font-size: inherit;
     padding: 1px 6px;
     resize: none;
-    width: 30vw;
+    width: 400px;
     overflow: hidden;
     min-height: 100px;
     line-height: 20px;
@@ -51,8 +46,7 @@
     border-radius: 8px;
 }
 
-
-.nav-add-note > *{
+.nav-add-note>* {
     margin-left: 20px;
     width: 50px;
     height: 50px;
@@ -63,7 +57,7 @@
 .nav-add-note .btn-txt {
     background-image: url(../../../../../apps/Keep/assets/icon/txt.png);
     background-repeat: no-repeat;
-    background-size:contain ;
+    background-size: contain;
     width: 50px;
     height: 50px;
 }
@@ -71,7 +65,7 @@
 .nav-add-note .btn-img {
     background-image: url(../../../../../apps/Keep/assets/icon/img.png);
     background-repeat: no-repeat;
-    background-size:contain ;
+    background-size: contain;
     width: 50px;
     height: 50px;
 }
@@ -79,27 +73,29 @@
 .nav-add-note .btn-video {
     background-image: url(../../../../../apps/Keep/assets/icon/video.png);
     background-repeat: no-repeat;
-    background-size:cover ;
-    width: 60   px;
+    background-size: cover;
+    width: 60 px;
     height: 50px;
 }
 
 .nav-add-note .btn-list {
     background-image: url(../../../../../apps/Keep/assets/icon/list.png);
     background-repeat: no-repeat;
-    background-size:contain ;
+    background-size: contain;
     width: 50px;
     height: 50px;
 }
-.nav-add-note button{
-   background-color: #e2cbdd;
+
+.nav-add-note button {
+    background-color: #e2cbdd;
 }
 
 /* .nav-add-note .btn-active {
     background-color: rgb(180, 178, 178);
     color: white;
 } */
-.keep-save{
+
+.keep-save {
     width: 150px;
     cursor: pointer;
     width: 190px;
@@ -112,4 +108,23 @@
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+@media screen and (max-width: 730px) {
+    .textarea-add-note {
+        width:70vw;
+    }
+    .add-note-container {
+        width: 80vw;
+    }
+    .add-note-container button{
+        width: 50vw;
+    }
+    .nav-add-note .btn-txt, .nav-add-note .btn-img, .nav-add-note .btn-list, .nav-add-note .btn-video {
+        width: 40px;
+        height: 40px;
+    }
+    .input-add-note {
+        width: 70vw;
+    }
 }
