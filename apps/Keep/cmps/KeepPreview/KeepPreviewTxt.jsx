@@ -1,11 +1,12 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
-import { MailService } from '../../../Mail/services/mail-service.js'
+import { LongTxt } from '../LongTxt.jsx'
 import { KeepUpdate } from '../../pages/KeepUpdate.jsx'
 
 export class KeepPreviewTxt extends React.Component {
     state = {
-       note: null
+       note: null,
+       isReadMore: false
     }
     
     componentDidMount() {
@@ -26,6 +27,10 @@ export class KeepPreviewTxt extends React.Component {
         keepService.saveNote(currNote)
     }
 
+    toggleRead = () => {
+        this.setState({ isReadMore: !this.state.isReadMore })
+    }
+
     setQryStr = () => {
         const { note } = this.state
         const str = note.info.txt.join(',')
@@ -43,9 +48,7 @@ export class KeepPreviewTxt extends React.Component {
         const qryStr = this.setQryStr()           
         return (
             <article className="note-preview" key={note.id} style={{backgroundColor: currBgColor}}>
-                {note.info.txt.map(line => {
-                    return <p>{line}</p>
-                })}
+                <LongTxt txt={note.info.txt} isReadMore={this.state.isReadMore} toggleRead={this.toggleRead} />
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
                 <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
