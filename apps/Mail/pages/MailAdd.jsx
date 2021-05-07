@@ -1,4 +1,5 @@
 import { MailService } from './services/mail-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 const { Link } = ReactRouterDOM
 export class MailAdd extends React.Component {
 
@@ -35,6 +36,7 @@ export class MailAdd extends React.Component {
 
   onSaveMail = (ev) => {
     ev.preventDefault()
+    showUserMsg('Your mail saved', 'success')
     MailService.addMail(this.state.mail).then(() => {
       return this.props.history.push('/MailApp')
     })

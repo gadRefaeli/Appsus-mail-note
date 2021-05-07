@@ -30,7 +30,7 @@ body {
     font-family: a;
     outline: none;
 }
-::placeholder{
+.input-search::placeholder{
     color: white;
     font-family: a;
 }
