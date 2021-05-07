@@ -63,7 +63,7 @@ export class MailPreview extends React.Component {
         <div className="inner-details-preview" >
           <Link to={`/MailApp/${mail.id}/`}>
             <span className="details-preview-subject" >{mail.subject}</span><br></br>
-            <span className="details-preview-body" >{mail.body.substring(0, 200) + '...'}</span>
+            <span className="details-preview-body" >{mail.body.substring(0, 50) + '...'}</span>
           </Link>
         </div>
           <button className={`${env} taggle-reading`} onClick={this.taggleIsReading}> </button>

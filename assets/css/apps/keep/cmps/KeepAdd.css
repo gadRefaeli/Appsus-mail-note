@@ -1,6 +1,6 @@
 .add-note-container {
     background-color: #E1CBDC;
-    width: 40vw;
+    width: 33vw;
     margin: 30px;
     border-radius: 10px;
     box-shadow: 1px 0px 8px 2px rgb(190, 190, 191, .73);
@@ -32,7 +32,6 @@
     border: none;
     margin: 5px;
     width: 30vw;
-    color: white;
     font-family: a;
     outline: none;
 }
@@ -55,36 +54,51 @@
 
 .nav-add-note > *{
     margin-left: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 40px;
-    height: 40px;
-    background-size: 40px;
+    width: 50px;
+    height: 50px;
     border: none;
-    background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
 }
 
 .nav-add-note .btn-txt {
     background-image: url(../../../../../apps/Keep/assets/icon/txt.png);
+    background-repeat: no-repeat;
+    background-size:contain ;
+    width: 50px;
+    height: 50px;
 }
 
 .nav-add-note .btn-img {
     background-image: url(../../../../../apps/Keep/assets/icon/img.png);
+    background-repeat: no-repeat;
+    background-size:contain ;
+    width: 50px;
+    height: 50px;
 }
 
 .nav-add-note .btn-video {
     background-image: url(../../../../../apps/Keep/assets/icon/video.png);
+    background-repeat: no-repeat;
+    background-size:cover ;
+    width: 60   px;
+    height: 50px;
 }
 
 .nav-add-note .btn-list {
     background-image: url(../../../../../apps/Keep/assets/icon/list.png);
+    background-repeat: no-repeat;
+    background-size:contain ;
+    width: 50px;
+    height: 50px;
+}
+.nav-add-note button{
+   background-color: #e2cbdd;
 }
 
-.nav-add-note .btn-active {
+/* .nav-add-note .btn-active {
     background-color: rgb(180, 178, 178);
     color: white;
-}
+} */
 .keep-save{
     width: 150px;
     cursor: pointer;
