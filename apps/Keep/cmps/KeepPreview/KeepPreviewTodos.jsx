@@ -1,5 +1,6 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 import { LongTodos } from '../LongTodos.jsx'
 
 export class KeepPreviewTodos extends React.Component {
@@ -86,8 +87,13 @@ export class KeepPreviewTodos extends React.Component {
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => { this.togglePinned(); loadNotes() }}></button>
                 <NavLink className="btn-mail" to={qryStr}></NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
+<<<<<<< HEAD
+                <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
+                <button className="btn-remove" onClick={() => { showUserMsg('Your note deleted', 'error'); keepService.removeNote(note.id); this.props.loadNotes() }}>Delete</button>
+=======
                 <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}></NavLink>
                 <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); this.props.loadNotes() }}></button>
+>>>>>>> 4baec105dc188c894b24fb7c46235952efba635a
             </article>
         )
     }

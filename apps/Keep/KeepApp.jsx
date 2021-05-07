@@ -47,7 +47,6 @@ export class KeepApp extends React.Component {
 
     render() {
         const { pinnedNotes, unPinnedNotes, noteMode } = this.state
-
         if (!pinnedNotes || !unPinnedNotes) return <div>Loading...</div>
 
         return (

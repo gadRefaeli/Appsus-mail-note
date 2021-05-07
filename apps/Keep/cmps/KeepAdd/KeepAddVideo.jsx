@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 
 export class KeepAddVideo extends React.Component {
     state = {
@@ -53,6 +54,7 @@ export class KeepAddVideo extends React.Component {
                 info: { title: '', url: '' }
             }
         }))
+        showUserMsg('Your note saved', 'success')
         this.inputRef.current.focus()
     }
 

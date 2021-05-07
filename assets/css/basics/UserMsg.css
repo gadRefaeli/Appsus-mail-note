@@ -1,0 +1,20 @@
+.user-msg {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    background-color: honeydew;
+    color: #333;
+    padding: 10px;
+}
+
+.user-msg.error {
+    background-color: lightcoral;
+}
+.user-msg.success {
+    background-color: lightgreen;
+}
+
+.btn-user-msg {
+    margin-right: 15px;
+}
