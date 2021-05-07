@@ -56,8 +56,6 @@ a {
     grid-template-areas: "first-chart-div details-preview inner-details-preview taggle-reading marker close-preview";
 }
 
-.details-preview-body {}
-
 .close-preview {
     grid-area: close-preview;
 }
