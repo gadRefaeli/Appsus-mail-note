@@ -61,19 +61,22 @@ export class KeepAddImg extends React.Component {
         return (
             <section className="add-note-container">
                 <div className="add-note-controller">
-                    <div>
-                        <input className="input-add-note" type="text" ref={this.inputRef} name="url" value={url} placeholder="Enter image URL..." onChange={this.handleChange} />
-                        <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
-                    </div>
-                    <nav className="nav-add-note">
+                <nav className="nav-add-note">
                         <button className="btn-txt" onClick={() => { this.props.setNoteMode('NoteTxt') }}></button>
                         <button className="btn-img btn-active" onClick={() => { this.props.setNoteMode('NoteImg') }}></button>
                         <button className="btn-video" onClick={() => { this.props.setNoteMode('NoteVideo') }}></button>
                         <button className="btn-list" onClick={() => { this.props.setNoteMode('NoteTodos') }}></button>
                     </nav>
+                    <div>
+                        <input className="input-add-note" type="text" ref={this.inputRef} name="url" value={url} placeholder="Enter image URL..." onChange={this.handleChange} />
+                        <br/>
+                        <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
+                    </div>
+                    
+                    <button className="keep-save" onClick={this.onSaveNote}>Save note</button>
+           
                 </div>
-                <button onClick={this.onSaveNote}>Save note</button>
-            </section>
+                 </section>
         )
     }
 }

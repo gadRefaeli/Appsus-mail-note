@@ -14,8 +14,7 @@ export class KeepFilter extends React.Component {
         const { search } = this.state
         return (
             <div>
-                <label htmlFor="input-search">Search</label>
-                <input type="text" className="input-search" id="input-search" value={search} onChange={this.handleChange} />
+                <input type="text" placeholder="Search" className="input-search" id="input-search" value={search} onChange={this.handleChange} />
             </div>
         )
     }

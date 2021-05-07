@@ -54,16 +54,18 @@ export class KeepAddTodos extends React.Component {
         return (
             <section className="add-note-container">
                 <div className="add-note-controller">
-                    <textarea className="textarea-add-note" ref={this.inputRef} name="txt" value={txt} placeholder="Enter lines..." onChange={this.handleChange} />
-                    <nav className="nav-add-note">
+                <nav className="nav-add-note">
                         <button className="btn-txt" onClick={() => { this.props.setNoteMode('NoteTxt') }}></button>
                         <button className="btn-img" onClick={() => { this.props.setNoteMode('NoteImg') }}></button>
                         <button className="btn-video" onClick={() => { this.props.setNoteMode('NoteVideo') }}></button>
                         <button className="btn-list btn-active" onClick={() => { this.props.setNoteMode('NoteTodos') }}></button>
                     </nav>
+                    <textarea className="textarea-add-note" ref={this.inputRef} name="txt" value={txt} placeholder="Enter lines..." onChange={this.handleChange} />
+                    
+                    <button className="keep-save" onClick={this.onSaveNote}>Save note</button>
+           
                 </div>
-                <button onClick={this.onSaveNote}>Save note</button>
-            </section>
+               </section>
         )
     }
 }

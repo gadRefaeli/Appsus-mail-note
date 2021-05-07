@@ -40,8 +40,8 @@ export class MailDetails extends React.Component {
     if (!mail) return <div>Loading...</div>
     var time = new Date(mail.sentAt).toLocaleString();
     return (
-
-      <div className="mail-details" >
+<div className="Mail-list-section" >
+      <div className="mail-details Mail-list-section" >
          <div className="mail-main-bar">
            <div className="mail-main-bar-inner">
            <p className="mail-details-time">{time}</p>
@@ -58,14 +58,14 @@ export class MailDetails extends React.Component {
           <button onClick={this.onDeleteMail} > <img src="/assets/img/trash-white.png" width="20"></img>Delete</button>
           
           <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/replay-01.png" width="20"></img>Reply</button>
-          <button ><Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}><img src="/assets/img/notes-01.png" width="30"></img>Save as note</Link></button>
+         <Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}> <button ><img src="/assets/img/notes-01.png" width="30"></img>Save as note</button></Link>
           
         </div>
        
 
 
       </div >
-
+      </div>
     )
   }
 }

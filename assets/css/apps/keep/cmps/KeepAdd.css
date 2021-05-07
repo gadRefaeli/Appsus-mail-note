@@ -1,14 +1,18 @@
 .add-note-container {
-    background-color: #fff;
-    width: 600px;
+    background-color: #E1CBDC;
+    width: 40vw;
     margin: 30px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 1px 0px 8px 2px rgb(190, 190, 191, .73);
+    padding: 10px;
 }
 
 .add-note-controller {
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .add-note-controller > * {
@@ -21,26 +25,37 @@
     font-size: inherit;
     padding: 1px 6px;
     margin: 5px;
+    height: 40px;
+    padding: 5px;
+    padding-left:15px ;
+    border-radius: 35px;
+    border: none;
+    margin: 5px;
+    width: 30vw;
+    color: white;
+    font-family: a;
+    outline: none;
 }
 
 .textarea-add-note {
-    border: 1px solid #ccc;
+    background-color:white ;
     font-family: inherit;
     font-size: inherit;
     padding: 1px 6px;
     resize: none;
-    width: 300px;
+    width: 30vw;
     overflow: hidden;
-    min-height: 40px;
+    min-height: 100px;
     line-height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
 }
 
-.nav-add-note {
-    width: 220px
-}
 
 .nav-add-note > *{
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     padding: 10px;
     width: 40px;
     height: 40px;
@@ -69,4 +84,18 @@
 .nav-add-note .btn-active {
     background-color: rgb(180, 178, 178);
     color: white;
+}
+.keep-save{
+    width: 150px;
+    cursor: pointer;
+    width: 190px;
+    background-color: #C297B8;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    font-family: b;
+    font-size: 18px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
