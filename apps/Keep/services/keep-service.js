@@ -111,7 +111,7 @@ function _createNotes() {
                     txt: ['Welcome to MissKeep!']
                 },
                 style: {
-                    backgroundColor: '#f49494'
+                    backgroundColor: '#fdbfbf'
                 }
             },
             {
@@ -128,9 +128,9 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: 'NoteVideo',
-                isPinned: true,
+                isPinned: false,
                 info: {
-                    url: '../../assets/video/note.mp4',
+                    url: 'https://player.vimeo.com/external/274413239.hd.mp4?s=2df73448dc4bdab5bb529167f29b10a068c3778f&profile_id=174',
                     title: 'Let\'s write notes!'
                 },
                 style: {
@@ -140,7 +140,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: 'NoteImg',
-                isPinned: true,
+                isPinned: false,
                 info: {
                     url: 'https://storage.hidabroot.org/articles_new/128082_tumb_750Xauto.jpg',
                     title: 'The life are graet!'
@@ -148,7 +148,97 @@ function _createNotes() {
                 style: {
                     backgroundColor: '#ffffff'
                 }
-            }
+            },
+            {
+                id: "W8BXdk",
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    txt: [{id: "W8BXdk-0", str: "To learn JS", isDone: false}, {id: "W8BXdk-1", str: "To create an app", isDone: false}]
+                },
+                style: {
+                    backgroundColor: '#f5f77d'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://cdn.pixabay.com/photo/2015/05/31/15/08/blank-792125__340.jpg',
+                    title: 'Notes & Mail...'
+                },
+                style: {
+                    backgroundColor: '#fdfdfd'
+                }
+            },{
+                id: utilService.makeId(),
+                type: 'NoteTxt',
+                isPinned: false,
+                info: {
+                    txt: ['Lorem Ipsum is simply dummy text of the printing and typesetting industry.','Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,','when an unknown printer took a galley of type and scrambled it to make a type specimen book.','It has survived not only five centuries,','but also the leap into electronic typesetting, remaining essentially unchanged.','It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,',' and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.']
+                },
+                style: {
+                    backgroundColor: '#f5f77d'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://cdn.pixabay.com/photo/2015/05/31/15/14/woman-792162__340.jpg',
+                    title: 'Notes & Mail...'
+                },
+                style: {
+                    backgroundColor: '#cbe2fb'
+                }
+            },
+            {
+                id: "W8BXdd",
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    txt: [{id: "W8BXdd-0", str: "To learn JS", isDone: false}, {id: "W8BXdd-1", str: "To create an app", isDone: false}]
+                },
+                style: {
+                    backgroundColor: '#fdbfbf'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteTxt',
+                isPinned: false,
+                info: {
+                    txt: ['Play JS!!!']
+                },
+                style: {
+                    backgroundColor: '#91f575'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://cdn.pixabay.com/photo/2015/05/31/14/23/organizer-791939__340.jpg',
+                    title: 'Notes & Mail...'
+                },
+                style: {
+                    backgroundColor: '#cbe2fb'
+                } 
+            },{
+                id: utilService.makeId(),
+                type: 'NoteImg',
+                isPinned: true,
+                info: {
+                    url: 'https://cdn.pixabay.com/photo/2017/07/21/23/41/note-2527454__340.jpg',
+                    title: 'Notes & Mail...'
+                },
+                style: {
+                    backgroundColor: '#ffffff'
+                } 
+            },
         ]
     }
     gNotes = notes;

@@ -1,5 +1,6 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 
 export class KeepPreviewVideo extends React.Component {
     state = {
@@ -41,7 +42,7 @@ export class KeepPreviewVideo extends React.Component {
         return (
             <div className="note-preview" key={note.id} style={{ backgroundColor: currBgColor }}>
                 <div className="video-player-container">
-                    <iframe width="240" height="180" src={note.info.url}>
+                    <iframe width="280" height="210" src={note.info.url}>
                     </iframe>
                 </div>
                 <h4>{note.info.title}</h4>
@@ -49,10 +50,8 @@ export class KeepPreviewVideo extends React.Component {
                 <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
                 <NavLink className="btn-update" to={`/KeepApp/${note.id}/`}>Edit</NavLink>
-                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}>Delete</button>
+                <button className="btn-remove" onClick={() => { showUserMsg('Your note deleted', ); keepService.removeNote(note.id); loadNotes() }}>Delete</button>
             </div>
         )
     }
 }
-
-// https://www.youtube.com/embed/07pzfamaI9E

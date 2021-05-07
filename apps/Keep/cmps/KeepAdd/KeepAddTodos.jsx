@@ -1,4 +1,5 @@
 import { keepService } from '../services/keep-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 
 export class KeepAddTodos extends React.Component {
     state = {
@@ -46,6 +47,7 @@ export class KeepAddTodos extends React.Component {
                 info: { txt: '' }
             }
         }))
+        showUserMsg('Your note saved', 'success')
         this.inputRef.current.focus()
     }
 

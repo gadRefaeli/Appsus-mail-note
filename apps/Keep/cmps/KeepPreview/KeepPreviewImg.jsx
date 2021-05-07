@@ -1,5 +1,6 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 
 export class KeepPreviewImg extends React.Component {
     state = {
@@ -46,7 +47,7 @@ export class KeepPreviewImg extends React.Component {
                 <NavLink className="btn-mail" to={qryStr}>Mail</NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
                 <NavLink className="btn-update" loadNotes={loadNotes}  to={`/KeepApp/${note.id}/`}>Edit</NavLink>
-                <button className="btn-remove" onClick={() => { keepService.removeNote(note.id); loadNotes() }}>Delete</button>
+                <button className="btn-remove" onClick={() => { showUserMsg('Your note deleted', 'error'); keepService.removeNote(note.id); loadNotes() }}>Delete</button>
             </article>
         )
     }
