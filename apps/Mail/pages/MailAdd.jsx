@@ -43,9 +43,9 @@ export class MailAdd extends React.Component {
   render() {
     const { subject, to, body, from } = this.state.mail
     return (
-      <div className="compose">
+      <div className="Mail-list-section">
 
-        <form className="mail-add mail-details" onSubmit={this.onSaveMail}>
+        <form className="mail-add mail-details " onSubmit={this.onSaveMail}>
           <div className="mail-main-bar">
             <div className="mail-main-bar-inner">
             <h1 className="title-mail-details">Compose new mail:</h1>

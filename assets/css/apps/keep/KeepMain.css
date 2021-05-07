@@ -12,6 +12,40 @@ body {
     align-items: center;
 }
 
+
 .keep-app h5 {
     margin: 20px;
+}
+.input-search{
+    height: 40px;
+    padding: 5px;
+    padding-left:15px ;
+    border-radius: 35px;
+    border-color: #C297B8;
+    border: none;
+    margin: 5px;
+    background-color: #C297B8;
+    width: 250px;
+    color: white;
+    font-family: a;
+    outline: none;
+}
+::placeholder{
+    color: white;
+    font-family: a;
+}
+.keep-notes-contaner{
+    background-color: #ffe6f7;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 100vw;
+}
+.keep-notes-contaner h5{
+font-size: 22px;
 }

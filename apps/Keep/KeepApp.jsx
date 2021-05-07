@@ -52,14 +52,13 @@ export class KeepApp extends React.Component {
 
         return (
             <main className="keep-app">
-
                 <Switch>
                     {noteMode === 'NoteTxt' && <KeepAddTxt loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                     {noteMode === 'NoteImg' && <KeepAddImg loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                     {noteMode === 'NoteTodos' && <KeepAddTodos loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                     {noteMode === 'NoteVideo' && <KeepAddVideo loadNotes={this.loadNotes} setNoteMode={this.onSetNoteMode} />}
                 </Switch>
-
+<div className="keep-notes-contaner"> 
                 <KeepFilter onSetFilter={this.onSetFilter} />
 
                 <section>
@@ -70,7 +69,7 @@ export class KeepApp extends React.Component {
                 </section>
 
                 <Route component={KeepUpdate} path="/KeepApp/:KeepId" />
-
+                </div>
 
             </main>
         )

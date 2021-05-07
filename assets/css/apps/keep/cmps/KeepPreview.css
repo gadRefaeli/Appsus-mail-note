@@ -1,13 +1,21 @@
 .note-preview {
     width: 300px;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 20px;
     position: relative;
     display: block;
     border-radius: 8px;
     box-shadow:  1px 0px 5px rgb(190, 190, 191, .73);
 }
-
+.note-preview{
+    margin: 5px;
+    align-items: center;
+    border-radius: 9px;
+    margin: 12px;
+    padding-right: 20px;
+    color: #878f99;
+    padding: 10px;
+    }
 .note-preview img {
     width: 100%;
 }
@@ -22,12 +30,12 @@
 
 .note-preview h4 {
     margin-bottom: 25px;
-}
+} */
 
 .note-preview .btn-pin {
-    position: absolute;
+     position: absolute;
     left: 10px;
-    bottom: 0;
+    bottom: 0; 
     width: 30px;
     height: 30px;
     border: none;
@@ -49,23 +57,23 @@
 .note-preview .btn-mail {
     position: absolute;
     right: 160px;
-    bottom: 0;
-}
+    bottom: 15px;
+} 
 
 .note-preview .btn-color {
     position: absolute;
     right: 100px;
-    bottom: 0;
+    bottom:  15px;
 }
 
 .note-preview .btn-update {
     position: absolute;
     right: 60px;
-    bottom: 0;
-}
+    bottom:  15px;
+} 
 
 .note-preview .btn-remove {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right:  15px;
+    bottom:  15px;
 }

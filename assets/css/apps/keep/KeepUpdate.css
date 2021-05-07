@@ -9,17 +9,20 @@
 
 .update-modal {
     position: fixed;
-    top: -100%;
+    top: -120%;
     left: 50%;
     transform: translate(-50%, 1200px);
     /* transition: translate 2s; */
-    width: 500px;
-    height: 500px;
-    background-color: rgb(238, 212, 212);
+    width: 40vw;
+    background-color: #D6BAD0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 0px 8px 2px rgb(190, 190, 191, .73);
+    padding: 10px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .update-note {
@@ -29,7 +32,17 @@
 }
 
 .textarea-edit-note {
+    background-color:white ;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
     resize: none;
-    padding: 10px;
-    height: 100px;
+    width: 30vw;
+    overflow: hidden;
+    min-height: 100px;
+    line-height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
 }
