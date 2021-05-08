@@ -11,7 +11,7 @@ export class KeepUpdateTxt extends React.Component {
     componentDidMount() {
         // this.inputRef.current.focus()  // Got error
         this.props.note.info.txt = this.props.note.info.txt.join('\n')
-        console.log(this.props.note.info.txt)
+        
         this.setState({ note: this.props.note })
     }
 
@@ -35,7 +35,6 @@ export class KeepUpdateTxt extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         if (!this.state.note) return <div>Downloading...</div>
         let { note } = this.state
         let { txt } = note.info

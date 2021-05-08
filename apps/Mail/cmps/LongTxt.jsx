@@ -9,7 +9,6 @@ export class LongTxt extends React.Component {
         const { isLongTxtShown } = this.state
 
         this.setState({ isLongTxtShown: !isLongTxtShown }, () => {
-            console.log(this.state.isLongTxtShown)
         });
     }
 

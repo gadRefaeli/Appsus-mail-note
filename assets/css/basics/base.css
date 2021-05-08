@@ -42,6 +42,11 @@ justify-content: center;
 background-color:#c297b8bd ;
 
 }
+.nav-bar .active {
+  font-family: c;
+  background-color:#c297b8bd ;
+}
+
 ul {
   list-style-type: none;
 }

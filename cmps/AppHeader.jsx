@@ -1,15 +1,15 @@
 import { UserMsg } from '../cmps/UserMsg.jsx'
 
 export function AppHeader() {
-    const { Link } = ReactRouterDOM;
+    const { Link,NavLink } = ReactRouterDOM;
   return (
       <nav >
           <UserMsg/>
           <ul className="nav-bar">
           <img src="./img/ICON-LOGO-01.png" width="70" height="70" alt="" />
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/MailApp">MisterEmail</Link></li>
-              <li><Link to="/KeepApp">MissKeep</Link></li>
+          <NavLink exact  to="/"> <li>Home</li></NavLink>
+          <NavLink to="/MailApp"><li>MisterEmail</li></NavLink>
+          <NavLink to="/KeepApp"><li>MissKeep</li></NavLink>
           </ul>
       </nav>
   )

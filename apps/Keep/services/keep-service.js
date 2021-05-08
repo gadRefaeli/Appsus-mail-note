@@ -56,7 +56,6 @@ function _addNote(note) {
     var note = _createNote(note);
     gNotes.unshift(note);
     _saveNotesToStorage();
-    console.log(gNotes)
     return Promise.resolve(note);
 }
 

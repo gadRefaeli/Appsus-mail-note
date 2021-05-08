@@ -14,7 +14,6 @@ export class KeepUpdateTodos extends React.Component {
             return line.str
         })
         this.props.note.info.txt = par.join('\n')
-        console.log(this.props.note.info.txt)
         this.setState({ note: this.props.note })
     }
 

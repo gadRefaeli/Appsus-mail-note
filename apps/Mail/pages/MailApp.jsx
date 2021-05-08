@@ -92,7 +92,6 @@ export class MailApp extends React.Component {
         const { mails } = this.state
         if (!mails) return <div>Loading...</div>
         var unreadPercentage=100*(this.state.unreadMailCount/(this.state.unreadMailCount+this.state.readMailCount));
-        console.log(unreadPercentage)
         const divStyle={ width: `${unreadPercentage}%`}
         return (
             <section className="Mail-list-section">

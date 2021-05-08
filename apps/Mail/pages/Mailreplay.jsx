@@ -21,7 +21,6 @@ export class Mailreplay extends React.Component {
 
   loadMail() {
     const id = this.props.match.params.MailId;
-    console.log(id)
     MailService.getMailById(id).then(mail => {
       if (!mail) return this.props.history.push('/')
       var tempMail=mail;
