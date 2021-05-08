@@ -100,7 +100,7 @@ export class MailApp extends React.Component {
                 <h1>Mailbox</h1> 
                 
                 <div>
-                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../apps/Mail/assets/img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
+                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../../../img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
                     <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
                     <p> Unread Mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
                     <div className="bar-unread"> <div className="bar-unread-inner" style={divStyle}></div></div>
@@ -108,11 +108,11 @@ export class MailApp extends React.Component {
                     </div>
                <div></div>
                  <div className="mail-side-bar-nav">
-                <h1>Mailbox <span className={sideBarClass} onClick={this.taggleSideBar}><img src="../apps/Mail/assets/img/compose-02.png" width="30"></img> </span></h1> 
+                <h1>Mailbox <span className={sideBarClass} onClick={this.taggleSideBar}><img src="../../../img/compose-02.png" width="30"></img> </span></h1> 
                 
                 {(this.state.sideBar)&&
                 <div className="side-bar-phone">
-                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../apps/Mail/assets/img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
+                <Link to="/MailApp/compose"><button className="compose-btn"><img src="../../../img/compose-01.png" width="30"></img><span>Compose</span>  </button> </Link>
                     <MailFilter onSetFilter={this.onSetFilter} getMailCount={this.getMailCount}/>
                     <p> Unread Mails: ({this.state.unreadMailCount})/( {this.state.unreadMailCount+this.state.readMailCount})</p>
                     <div className="bar-unread"> <div className="bar-unread-inner" style={divStyle}></div></div>

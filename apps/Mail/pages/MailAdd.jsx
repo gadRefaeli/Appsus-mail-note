@@ -64,8 +64,8 @@ export class MailAdd extends React.Component {
           </div>
           <div className="  mail-details-btn">
             <h1>Mailbox</h1>
-            <button type="submit"><img src="/assets/img/send-01.png" width="30"></img>Send</button>
-            <button onClick={() => this.props.history.push('/MailApp')}> <img src="/assets/img/back.png" width="20"></img>Go back</button>
+            <button type="submit"><img src="../../../img/send-01.png" width="30"></img>Send</button>
+            <button onClick={() => this.props.history.push('/MailApp')}> <img src="../../../img/back.png" width="20"></img>Go back</button>
           </div>
         </form>
       </div >
