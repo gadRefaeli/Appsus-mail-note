@@ -12,10 +12,10 @@ export class Home extends React.Component {
                     Manage emails and save messages in a synchronized and user-friendly way!
                     In this app you will find everything you need to manage your agenda at work at home and everywhere.
                     You can enjoy uncompromising user friendliness with adaptability to all types of devices.</p>
-                    <button className="btn-header"><Link to="/MailApp">Mail App</Link></button>
-                    <button className="btn-header"><Link to="/KeepApp">Keep App</Link></button>
+                    <button className="btn-header"><Link to="/MailApp">MisterEmail</Link></button>
+                    <button className="btn-header"><Link to="/KeepApp">MissKeep</Link></button>
                 </div>
-                <div className="mockup"><img src="../assets/img/new1-01.png"></img> </div>
+                <div className="mockup"><img src="./img/new1-01.png"></img> </div>
 
             </div>
         )

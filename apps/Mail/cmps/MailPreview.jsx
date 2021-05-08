@@ -8,7 +8,7 @@ export class MailPreview extends React.Component {
     removed: false,
     isRead: null,
     count: null,
-    isStar: false
+    isStared: false
   }
   componentDidMount() {
     this.loadMail()
@@ -36,13 +36,13 @@ export class MailPreview extends React.Component {
   }
   taggleIsStared = () => {
     this.props.taggleIsStared(this.props.name.id)
-    this.setState({ isStar: !this.state.isStar })
+    this.setState({ isStared: !this.state.isStared })
   }
 
   render() {
     var readingOn = (this.state.isRead) ? 'reading' : 'not-reading';
     var env = (this.state.isRead) ? 'close-env' : 'open-env';
-    var stared = (this.state.isStar) ? 'stared' : 'not-stared';
+    var star = (this.state.isStared) ? 'stared' : 'not-stared';
     var mail = this.props.name
 
     var time = new Date(mail.sentAt).toLocaleString();
@@ -69,7 +69,7 @@ export class MailPreview extends React.Component {
         </div>
           <button className={`${env} taggle-reading`} onClick={this.taggleIsReading}> </button>
          
-          <button className= {`${stared} marker`} onClick={this.taggleIsStared}></button>
+          <button className= {`${star} marker`} onClick={this.taggleIsStared}></button>
          
           <button  className="close-preview" onClick={() => {showUserMsg('Your mail deleted', 'error'); this.removePreviewedMail()}}> </button>
        

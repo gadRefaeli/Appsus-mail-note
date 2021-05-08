@@ -6,9 +6,10 @@ export function AppHeader() {
       <nav >
           <UserMsg/>
           <ul className="nav-bar">
+          <img src="./img/ICON-LOGO-01.png" width="70" height="70" alt="" />
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/MailApp">Mail App</Link></li>
-              <li><Link to="/KeepApp">Keep App</Link></li>
+              <li><Link to="/MailApp">MisterEmail</Link></li>
+              <li><Link to="/KeepApp">MissKeep</Link></li>
           </ul>
       </nav>
   )
