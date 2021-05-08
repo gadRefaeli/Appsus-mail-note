@@ -1,5 +1,6 @@
 const { Link } = ReactRouterDOM
 import { MailService } from '../services/mail-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 
 export class MailDetails extends React.Component {
 
@@ -28,6 +29,7 @@ export class MailDetails extends React.Component {
   }
   
   onDeleteMail = () => {
+    showUserMsg('Your mail deleted', 'error')
     MailService.removeMail(this.state.mail.id)
       .then(() => {
         this.props.history.push('/MailApp')

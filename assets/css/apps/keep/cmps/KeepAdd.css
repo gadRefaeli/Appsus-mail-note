@@ -31,6 +31,10 @@
     outline: none;
 }
 
+.input-add-note::placeholder{
+    color:#C297B8;
+}
+
 .textarea-add-note {
     background-color: white;
     font-family: inherit;
@@ -44,6 +48,10 @@
     outline: none;
     border: none;
     border-radius: 8px;
+}
+
+.textarea-add-note::placeholder{
+    color:#C297B8;
 }
 
 .nav-add-note>* {
@@ -62,12 +70,20 @@
     height: 50px;
 }
 
+.nav-add-note .btn-txt.btn-active {
+    background-image: url(../../../../../apps/Keep/assets/icon/txt2.png);
+}
+
 .nav-add-note .btn-img {
     background-image: url(../../../../../apps/Keep/assets/icon/img.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 50px;
     height: 50px;
+}
+
+.nav-add-note .btn-img.btn-active {
+    background-image: url(../../../../../apps/Keep/assets/icon/img2.png);
 }
 
 .nav-add-note .btn-video {
@@ -78,6 +94,10 @@
     height: 50px;
 }
 
+.nav-add-note .btn-video.btn-active {
+    background-image: url(../../../../../apps/Keep/assets/icon/video2.png);
+}
+
 .nav-add-note .btn-list {
     background-image: url(../../../../../apps/Keep/assets/icon/list.png);
     background-repeat: no-repeat;
@@ -85,6 +105,11 @@
     width: 50px;
     height: 50px;
 }
+
+.nav-add-note .btn-list.btn-active {
+    background-image: url(../../../../../apps/Keep/assets/icon/list2.png);
+}
+
 
 .nav-add-note button {
     background-color: #e2cbdd;

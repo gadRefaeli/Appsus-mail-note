@@ -1,5 +1,6 @@
 const { Link } = ReactRouterDOM
 import { MailService } from './services/mail-service.js'
+import { showUserMsg } from '../services/event-bus-service.js'
 export class MailPreview extends React.Component {
 
   state = {
@@ -70,7 +71,7 @@ export class MailPreview extends React.Component {
          
           <button className= {`${stared} marker`} onClick={this.taggleIsStared}></button>
          
-          <button  className="close-preview" onClick={this.removePreviewedMail}> </button>
+          <button  className="close-preview" onClick={() => {showUserMsg('Your note deleted', 'error'); this.removePreviewedMail()}}> </button>
        
       </article>
     )
