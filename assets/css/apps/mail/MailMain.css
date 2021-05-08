@@ -295,7 +295,7 @@ textarea[name="body"] {
 }
 
 .open-env {
-    background: url("/assets/img/read-01.png");
+    background: url("./../../../img/read-01.png");
     height: 45px;
     width: 45px;
     margin-bottom: 8px;
@@ -303,14 +303,14 @@ textarea[name="body"] {
 }
 
 .close-env {
-    background: url("/assets/img/read-02-01.png");
+    background: url("./../../../img/read-02-01.png");
     height: 45px;
     width: 45px;
     background-size: cover;
 }
 
 .close-preview {
-    background: url("/assets/img/trashgreen.png");
+    background: url("./../../../img/trashgreen.png");
     height: 40px;
     width: 40px;
     background-size: contain;
@@ -318,7 +318,7 @@ textarea[name="body"] {
 }
 
 .close-preview:hover {
-    background: url("/assets/img/trash-01.png");
+    background: url("./../../../img/trash-01.png");
     height: 40px;
     width: 40px;
     background-size: contain;

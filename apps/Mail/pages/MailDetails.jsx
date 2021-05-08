@@ -56,11 +56,11 @@ export class MailDetails extends React.Component {
         </div>
         <div className=" mail-details-btn">
           <h1>Mailbox</h1>
-          <button onClick={() => this.props.history.push('/MailApp')}  > <img src="/assets/img/back.png" width="20"></img>Go back</button>
-          <button onClick={this.onDeleteMail} > <img src="/assets/img/trash-white.png" width="20"></img>Delete</button>
+          <button onClick={() => this.props.history.push('/MailApp')}  > <img src="./img/back.png" width="20"></img>Go back</button>
+          <button onClick={this.onDeleteMail} > <img src="./img/trash-white.png" width="20"></img>Delete</button>
           
-          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="/assets/img/replay-01.png" width="20"></img>Reply</button>
-         <Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}> <button ><img src="/assets/img/notes-01.png" width="30"></img>Save as note</button></Link>
+          <button onClick={() => this.props.history.push(`/MailApp/${mail.id}/replay`)} ><img src="./img/replay-01.png" width="20"></img>Reply</button>
+         <Link to={`/KeepApp/?subject=${mail.subject}&from=${mail.from}&body=${mail.body}&to=${mail.to}`}> <button ><img src="./img/notes-01.png" width="30"></img>Save as note</button></Link>
           
         </div>
        

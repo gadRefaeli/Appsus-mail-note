@@ -15,7 +15,7 @@ export class Home extends React.Component {
                     <button className="btn-header"><Link to="/MailApp">Mail App</Link></button>
                     <button className="btn-header"><Link to="/KeepApp">Keep App</Link></button>
                 </div>
-                <div className="mockup"><img src="../assets/img/new1-01.png"></img> </div>
+                <div className="mockup"><img src="./assets/img/new1-01.png"></img> </div>
 
             </div>
         )
