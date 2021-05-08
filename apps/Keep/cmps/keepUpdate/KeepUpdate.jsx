@@ -1,9 +1,9 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
-import { KeepUpdateTxt } from '../cmps/KeepUpdate/KeepUpdateTxt.jsx'
-import { KeepUpdateImg } from '../cmps/KeepUpdate/KeepUpdateImg.jsx'
-import { KeepUpdateVideo } from '../cmps/KeepUpdate/KeepUpdateVideo.jsx'
-import { KeepUpdateTodos } from '../cmps/KeepUpdate/KeepUpdateTodos.jsx'
+import { KeepUpdateTxt } from './KeepUpdateTxt.jsx'
+import { KeepUpdateImg } from './KeepUpdateImg.jsx'
+import { KeepUpdateVideo } from './KeepUpdateVideo.jsx'
+import { KeepUpdateTodos } from './KeepUpdateTodos.jsx'
 
 export class KeepUpdate extends React.Component {
     state = {

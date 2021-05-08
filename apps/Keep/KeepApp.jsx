@@ -7,7 +7,7 @@ import { KeepAddImg } from './cmps/KeepAdd/KeepAddImg.jsx'
 import { KeepAddTodos } from './cmps/KeepAdd/KeepAddTodos.jsx'
 import { KeepAddTxt } from './cmps/KeepAdd/KeepAddTxt.jsx'
 import { KeepAddVideo } from './cmps/KeepAdd/KeepAddVideo.jsx'
-import { KeepUpdate } from '../../pages/KeepUpdate.jsx'
+import { KeepUpdate } from './cmps/keepUpdate/KeepUpdate.jsx'
 import { KeepFilter } from './cmps/KeepFilter.jsx'
 
 export class KeepApp extends React.Component {
