@@ -281,14 +281,14 @@ textarea[name="body"] {
 }
 
 .stared {
-    background: url("/assets/img/staryellow-01.png");
+    background: url("./../../../img/staryellow-01.png");
     height: 40px;
     width: 40px;
     background-size: cover;
 }
 
 .not-stared {
-    background: url("/assets/img/starempty-01.png");
+    background: url("./../../../img/starempty-01.png");
     height: 40px;
     width: 40px;
     background-size: cover;
