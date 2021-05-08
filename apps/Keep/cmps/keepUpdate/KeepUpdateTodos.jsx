@@ -50,7 +50,7 @@ export class KeepUpdateTodos extends React.Component {
                     value={txt} placeholder="Enter text..." onChange={this.handleChange}></textarea>
                 <div class="edit-btns">
 
-                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="/assets/img/replay-01.png" width="40"></img></NavLink>
+                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="./img/replay-01.png" width="40"></img></NavLink>
                 </div>
             </article>
         )

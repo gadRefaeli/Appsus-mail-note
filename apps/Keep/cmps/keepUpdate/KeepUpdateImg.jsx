@@ -51,7 +51,7 @@ export class KeepUpdateImg extends React.Component {
                 <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
                 <div class="edit-btns">
 
-                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
+                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="./img/replay-01.png" width="40"></img></NavLink>
                 </div>
             </article>
         )

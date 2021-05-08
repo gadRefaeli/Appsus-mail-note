@@ -44,7 +44,7 @@ export class KeepUpdateTxt extends React.Component {
                 <textarea className="textarea-edit-note" ref={this.inputRef} name="txt"
                     value={txt} placeholder="Enter text..." onChange={this.handleChange}></textarea>
                 <div className="edit-btns">
-                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="/assets/img/replay-01.png" width="40"></img></NavLink>
+                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="./img/replay-01.png" width="40"></img></NavLink>
                 </div>
             </article>
         )
