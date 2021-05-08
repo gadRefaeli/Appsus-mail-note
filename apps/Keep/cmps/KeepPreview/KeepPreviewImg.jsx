@@ -8,7 +8,9 @@ export class KeepPreviewImg extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ note: this.props.note })
+        let noteId = this.props.note.id
+        keepService.getNoteById(noteId)
+            .then(note => this.setState({note}))
     }
 
     setColor = (ev) => {
@@ -46,7 +48,7 @@ export class KeepPreviewImg extends React.Component {
                 <button className={`btn-pin ${note.isPinned}`} onClick={() => {this.togglePinned(); loadNotes()}}></button>
                 <NavLink className="btn-mail" to={qryStr}></NavLink>
                 <input className="btn-color" type="color" value="#ffffff" onChange={() => { this.setColor(event) }}></input>
-                <NavLink className="btn-update" loadNotes={loadNotes}  to={`/KeepApp/${note.id}/`}></NavLink>
+                <NavLink className="btn-update" loadNotes={loadNotes} to={`/KeepApp/${note.id}/`}></NavLink>
                 <button className="btn-remove" onClick={() => { showUserMsg('Your note deleted', 'error'); keepService.removeNote(note.id); loadNotes() }}></button>
             </article>
         )

@@ -16,7 +16,8 @@ body {
 .keep-app h5 {
     margin: 20px;
 }
-.input-search{
+
+.input-search {
     height: 40px;
     padding: 5px;
     padding-left:15px ;
@@ -30,22 +31,35 @@ body {
     font-family: a;
     outline: none;
 }
-.input-search::placeholder{
+
+.input-search::placeholder {
     color: white;
     font-family: a;
 }
-.keep-notes-contaner{
+
+.keep-notes-contaner {
     background-color: #ffe6f7;
     padding: 8px;
     border-radius: 8px;
     margin: 20px;
     display: flex;
     flex-direction: column;
-    padding: 40px;
-    padding-left: 100px;
     padding-right: 100px;
     width: 100vw;
 }
-.keep-notes-contaner h5{
+
+.keep-notes-contaner h5 {
 font-size: 22px;
+}
+
+@media screen and (min-width: 400px) {
+    .keep-notes-contaner {
+        padding: 40px;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .keep-notes-contaner {
+        padding-left: 100px;
+    }
 }

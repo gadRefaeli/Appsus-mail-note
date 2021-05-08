@@ -71,7 +71,7 @@ export class MailPreview extends React.Component {
          
           <button className= {`${stared} marker`} onClick={this.taggleIsStared}></button>
          
-          <button  className="close-preview" onClick={() => {showUserMsg('Your note deleted', 'error'); this.removePreviewedMail()}}> </button>
+          <button  className="close-preview" onClick={() => {showUserMsg('Your mail deleted', 'error'); this.removePreviewedMail()}}> </button>
        
       </article>
     )

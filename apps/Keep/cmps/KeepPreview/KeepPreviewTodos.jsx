@@ -9,18 +9,23 @@ export class KeepPreviewTodos extends React.Component {
         currTxt: {},
         isReadMore: false
     }
-    gNote = this.props.note
 
     componentDidMount() {
-        this.setState({ note: this.props.note })
+        let noteId = this.props.note.id
+        keepService.getNoteById(noteId)
+            .then(note => {
+                this.setState({note}, this.printLines(note))
+            })
+    }
+
+    printLines = (note) => {
+        const currNote = note
         var gTxt = {}
-        if (this.props.note.info.txt) {
-            console.log(this.props.note.info.txt)
-            this.props.note.info.txt.forEach(line => {
+        if (currNote.info.txt) {
+            currNote.info.txt.forEach(line => {
                 gTxt[line.id] = line.isDone
             })
         }
-        
         this.setState({ currTxt: gTxt })
     }
 
@@ -93,11 +98,3 @@ export class KeepPreviewTodos extends React.Component {
         )
     }
 }
-
-// {note.info.txt.map(line => {
-//     return <p key={line.id}><input type="checkbox" id={line.id} name={line.id} checked={currTxt[line.id]} onChange={this.handleInputChange} />
-//         <label htmlFor={line.id}>{' ' + line.str}</label></p>
-// })}
-
-{/* <LongTodos txt={note.info.txt} isReadMore={this.state.isReadMore} toggleRead={this.toggleRead}
-                 currTxt={currTxt} handleInputChange={this.handleInputChange} /> */}

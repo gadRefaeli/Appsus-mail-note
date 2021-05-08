@@ -1,6 +1,6 @@
 const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
-export class KeepUpdateVideo extends React.Component {
+export class KeepUpdateImg extends React.Component {
     state = {
         note: null
     }
@@ -37,7 +37,7 @@ export class KeepUpdateVideo extends React.Component {
         let currNote = note
         keepService.saveNote(currNote)
             .then(() => {
-                this.props.loadNotes()
+                this.props.loadNotes
             })
     }
 
@@ -51,7 +51,7 @@ export class KeepUpdateVideo extends React.Component {
                 <input className="input-add-note" type="text" name="title" value={title} placeholder="Enter title..." onChange={this.handleChange} />
                 <div class="edit-btns">
 
-                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}><img src="/assets/img/replay-01.png" width="40"></img></NavLink>
+                    <NavLink onClick={this.onSaveNote} to={`/KeepApp/`}>Go back</NavLink>
                 </div>
             </article>
         )

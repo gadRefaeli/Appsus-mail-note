@@ -20,7 +20,6 @@ export class KeepUpdate extends React.Component {
     render() {
         const { note } = this.state
         if (!note) return <div>Downloading...</div>
-        console.log(note)
         const DynamicCmp = (props) => {
             switch (note.type) {
                 case 'NoteTxt':

@@ -8,7 +8,9 @@ export class KeepPreviewVideo extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ note: this.props.note })
+        let noteId = this.props.note.id
+        keepService.getNoteById(noteId)
+            .then(note => this.setState({note}))
     }
 
     setColor = (ev) => {
