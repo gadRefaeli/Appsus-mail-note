@@ -543,7 +543,14 @@ textarea[name="body"] {
         font-size: 12px;
     }
     .details-preview-from {
-        font-size: 12px;
+        font-size: 8px;
+    }
+    .btn-header{
+font-size: 14px;
+width: 130px;
+    }
+    .details-preview{
+        min-width: 100px;
     }
     .search-div input {
         width: 150px;
