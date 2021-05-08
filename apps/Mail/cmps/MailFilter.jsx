@@ -26,11 +26,13 @@ export class MailFilter extends React.Component {
   
 
   handleChange = (ev) => {
-    this.setState(({ filterBy }) => ({
-      filterBy: { ...filterBy, ['star']: false}
-    }))
+    
     const field = ev.target.name
     let value = ev.target.value;
+    if(field!=='star'){
+      this.setState(({ filterBy }) => ({
+        filterBy: { ...filterBy, ['star']: false}
+      }))}
     if (value === 'true') value = true;
     if (value === 'false') value = false;
     if (value === 'null') value = null;
@@ -39,7 +41,7 @@ export class MailFilter extends React.Component {
     }), () => {
       this.props.onSetFilter(this.state.filterBy)
     })
-   
+  
   }
 
   onFilter = (ev) => {
@@ -52,11 +54,11 @@ export class MailFilter extends React.Component {
     return (
 
       <form className="mail-filter" onSubmit={this.onFilter}>
-        
+        <button name="star" value="true" onClick={this.handleChange} >Stared Mails</button>
         <button name="read" value="null" onClick={this.handleChange} >All Mails </button>
-        <button name="read" value={true} onClick={this.handleChange} >Read Mails</button>
-        <button name="read" value={false} onClick={this.handleChange} >Unread Mails</button>
-        <button name="star" value={true} onClick={this.handleChange} >Stared Mails</button>
+        <button name="read" value="true" onClick={this.handleChange} >Read Mails</button>
+        <button name="read" value="false" onClick={this.handleChange} >Unread Mails</button>
+        
     
       </form>
     )

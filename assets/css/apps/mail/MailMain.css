@@ -145,7 +145,7 @@ a {
 }
 
 .mail-main-bar {
-    background-color: #d9ebe8;
+    background-color: #3c669717;
     padding: 8px;
     border-radius: 8px;
     margin: 20px;
@@ -174,7 +174,7 @@ a {
     align-content: center;
     justify-content: flex-start;
     background-color: #f5f6f8;
-    height: auto;
+    height: 100vh;
 }
 
 .first-chart {
@@ -466,6 +466,7 @@ textarea[name="body"] {
         padding: 5px;
         font-size: 16px;
         width: 80px;
+        max-width: 80vw;
     }
     .mail-details {
         flex-direction: column-reverse;
