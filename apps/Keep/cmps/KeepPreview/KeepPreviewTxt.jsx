@@ -2,7 +2,7 @@ const { NavLink } = ReactRouterDOM
 import { keepService } from '../../services/keep-service.js'
 import { LongTxt } from '../LongTxt.jsx'
 import { showUserMsg } from '../services/event-bus-service.js'
-import { KeepUpdate } from '../../pages/KeepUpdate.jsx'
+import { KeepUpdate } from '../keepUpdate/KeepUpdate.jsx'
 
 export class KeepPreviewTxt extends React.Component {
     state = {

@@ -10,9 +10,10 @@ export class UserMsg extends React.Component {
   }
 
   componentDidMount() {
-    // Here we listen to the event that we emited, its important to remove the listener 
     this.removeEvent = eventBusService.on('show-user-msg', (msg) => {
-      this.setState({ msg })
+      this.setState({ msg }, () => {
+        setTimeout(() => {this.setState({ msg: null })}, 2500)
+      })
     })
   }
 

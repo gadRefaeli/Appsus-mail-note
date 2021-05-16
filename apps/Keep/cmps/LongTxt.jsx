@@ -7,13 +7,13 @@ export function LongTxt({ txt, isReadMore, toggleRead }) {
     }
     
     gTxt = gTxt.map((line, idx) => {
-        return <span key={idx}>{line}{(!isReadMore && txt.length > 4 && idx === 3)? '...' : ''}</span>
+        return <p key={idx}>{line}{(!isReadMore && txt.length > 4 && idx === 3)? '...' : ''}</p>
     })
 
     return (
         <span>
             <span>{gTxt}
-            {txt.length > 4 && <span onClick={toggleRead}>{(isReadMore) ? ' [Read less]' : ' [Read More]'}</span>}
+            {txt.length > 4 && <span className="clickable" onClick={toggleRead}>{(isReadMore) ? ' [Read less]' : ' [Read More]'}</span>}
             <p></p>
             <br/>
             </span>

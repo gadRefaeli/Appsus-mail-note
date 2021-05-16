@@ -5,7 +5,6 @@ export class KeepUpdateImg extends React.Component {
         note: null
     }
 
-
     inputRef = React.createRef()
 
     componentDidMount() {

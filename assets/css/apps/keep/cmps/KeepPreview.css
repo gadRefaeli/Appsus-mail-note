@@ -140,3 +140,7 @@
     right:  5px;
     bottom:  15px;
 }
+
+.clickable {
+    cursor: pointer;
+}
